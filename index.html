@@ -10,28 +10,26 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #0d0d0d;
-    color: white;
+    color: #fff;
 }
 
-/* NAVBAR */
+/* HEADER */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
     background: black;
-    position: sticky;
-    top: 0;
+    padding: 10px 20px;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .logo {
-    width: 45px;
+    width: 50px;
+    margin-right: 10px;
 }
 
 .brand {
@@ -43,110 +41,81 @@ body {
     margin: 0 10px;
     text-decoration: none;
     color: white;
-    font-size: 14px;
 }
 
-/* BLUE BUTTON */
 .whatsapp-btn {
     background: #007bff;
     padding: 8px 12px;
+    border-radius: 5px;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
 }
 
-/* SECTION TITLES */
+/* SECTIONS */
 .section-title {
     text-align: center;
-    margin: 30px 0 10px;
+    margin-top: 30px;
 }
 
-/* GRID */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
-    padding: 15px;
+    padding: 20px;
 }
 
-/* CARD */
 .card {
     background: #1a1a1a;
-    border-radius: 10px;
     padding: 10px;
+    border-radius: 10px;
     text-align: center;
 }
 
 .card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.card h3 {
-    font-size: 15px;
-    margin: 8px 0;
-}
-
-.card p {
-    font-size: 13px;
-}
-
-.price {
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-/* BLUE BUTTON FOR PRODUCTS */
 .buy {
     background: #007bff;
     border: none;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
-    border-radius: 5px;
+    margin-top: 10px;
     color: white;
-    cursor: pointer;
-}
-
-.badge {
-    background: red;
-    padding: 3px 6px;
-    font-size: 10px;
     border-radius: 5px;
-    display: inline-block;
-    margin-bottom: 5px;
 }
 
 /* ABOUT + REVIEWS */
-.info-section {
+section {
     padding: 20px;
     text-align: center;
 }
 
-.email {
-    margin-top: 10px;
-    color: #00c3ff;
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- HEADER -->
 <header class="navbar">
     <div class="nav-left">
-        <img src="logo.png" class="logo">
+        <img src="logo.png.jpg" class="logo">
         <span class="brand">Drew Gadgets</span>
     </div>
 
     <nav class="nav-links">
+        <a href="#">Home</a>
         <a href="#phones">Phones</a>
         <a href="#laptops">Laptops</a>
         <a href="#accessories">Accessories</a>
     </nav>
 
-    <a href="https://wa.me/2348028412449" class="whatsapp-btn">WhatsApp</a>
+    <a href="https://wa.me/2348028412449" class="whatsapp-btn">
+        Chat on WhatsApp
+    </a>
 </header>
 
 <!-- PHONES -->
@@ -156,46 +125,41 @@ body {
 <div class="card">
 <img src="iphone16.jpg">
 <h3>iPhone 16 (128GB)</h3>
-<p>Clean • Face ID • 100% Battery</p>
-<div class="price">₦700,000</div>
+<p>Clean • Face ID • Battery 100%</p>
+<strong>₦700,000</strong>
 <a href="https://wa.me/2348028412449?text=I want iPhone 16">
-<button class="buy">Order Now</button></a>
+<button class="buy">Order Now</button>
+</a>
 </div>
 
 <div class="card">
 <img src="12pro.jpg">
 <h3>iPhone 12 Pro (128GB)</h3>
-<p>Clean • Face ID • Strong Battery</p>
-<div class="price">₦370,000</div>
+<p>Clean • Strong Battery</p>
+<strong>₦370,000</strong>
 <a href="https://wa.me/2348028412449?text=I want iPhone 12 Pro">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="samsungs24ultra.jpg">
-<h3>Samsung S24 Ultra</h3>
-<p>Premium • Sharp Camera • Fast</p>
-<div class="price">₦760,000</div>
-<a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="samsungs22ultra.jpg">
-<h3>Samsung S22 Ultra (256GB)</h3>
-<p>Flagship • Smooth • Clean</p>
-<div class="price">₦540,000</div>
-<a href="https://wa.me/2348028412449?text=I want Samsung S22 Ultra">
-<button class="buy">Order Now</button></a>
+<button class="buy">Order Now</button>
+</a>
 </div>
 
 <div class="card">
 <img src="iphone17.jpg">
 <h3>iPhone 17 (256GB)</h3>
-<p>BH 98% • Physical SIM</p>
-<div class="price">₦1,250,000</div>
+<p>Physical SIM • BH 98%</p>
+<strong>₦1,250,000</strong>
 <a href="https://wa.me/2348028412449?text=I want iPhone 17">
-<button class="buy">Order Now</button></a>
+<button class="buy">Order Now</button>
+</a>
+</div>
+
+<div class="card">
+<img src="samsungs24ultra.jpg">
+<h3>Samsung S24 Ultra</h3>
+<p>Premium • Sharp Camera</p>
+<strong>₦760,000</strong>
+<a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
+<button class="buy">Order Now</button>
+</a>
 </div>
 
 </section>
@@ -205,13 +169,13 @@ body {
 <section class="products">
 
 <div class="card">
-<div class="badge">HOT</div>
 <img src="alienware.jpg">
 <h3>Alienware x17 R1</h3>
-<p>i7 • 32GB • RTX 3080</p>
-<div class="price">₦2,400,000</div>
+<p>i7 • 32GB RAM • RTX 3080</p>
+<strong>₦2,400,000</strong>
 <a href="https://wa.me/2348028412449?text=I want Alienware x17">
-<button class="buy">Order Now</button></a>
+<button class="buy">Order Now</button>
+</a>
 </div>
 
 </section>
@@ -224,29 +188,29 @@ body {
 <img src="accessories.jpg">
 <h3>Accessories</h3>
 <p>Chargers • AirPods • Cases</p>
-<div class="price">From ₦10,000</div>
+<strong>From ₦10,000</strong>
 <a href="https://wa.me/2348028412449?text=I want Accessories">
-<button class="buy">Shop Now</button></a>
+<button class="buy">Shop Now</button>
+</a>
 </div>
 
 </section>
 
 <!-- ABOUT -->
-<section class="info-section">
+<section id="about">
 <h2>About Us</h2>
-<p>Drew Gadgets is your trusted plug for quality phones, laptops, and accessories.  
-We deliver nationwide and ensure all devices are tested and verified.</p>
-
-<p class="email">📧 info@drewgadgets.com</p>
+<p>Drew Gadgets is your trusted plug for quality phones and gadgets in Nigeria.</p>
+<p>We deliver nationwide and ensure all products are tested and verified.</p>
+<p><b>Email:</b> info@drewgadgets.com</p>
 </section>
 
 <!-- REVIEWS -->
-<section class="info-section">
+<section id="reviews">
 <h2>⭐ Customer Reviews</h2>
 
-<p>⭐⭐⭐⭐⭐ “Got my iPhone same day. Trusted seller!”</p>
-<p>⭐⭐⭐⭐⭐ “Everything works perfectly. Will buy again.”</p>
-<p>⭐⭐⭐⭐⭐ “Fast delivery and legit product.”</p>
+<p>⭐⭐⭐⭐⭐ “Got my iPhone same day. Trusted seller!” — Chinedu Okafor</p>
+<p>⭐⭐⭐⭐⭐ “Everything works perfectly. Will buy again.” — Aisha Bello</p>
+<p>⭐⭐⭐⭐⭐ “Fast delivery and legit product.” — Tunde Adeyemi</p>
 
 </section>
 
