@@ -7,232 +7,215 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: Arial, sans-serif;
     background: #0d0d0d;
     color: white;
 }
-.header {
-    text-align: center;
-    padding: 20px;
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
     background: black;
+    position: sticky;
+    top: 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo {
-    width: 80px;      /* adjust size */
-    height: auto;
-    margin-bottom: 10px;
-}
-/* HEADER */
-
-<header class="header">
-    <img src="logo.png.jpg" alt="Drew Gadgets Logo" class="logo">
-    <h1>Drew Gadgets</h1>
-    <p>Your Trusted Plug 🔌</p>
-</header>
-h1 {
-    color: #00ffcc;
+    width: 45px;
 }
 
-/* SECTION */
+.brand {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.whatsapp-btn {
+    background: green;
+    padding: 8px 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* SECTIONS */
 .section-title {
-    padding: 15px;
-    font-size: 22px;
+    text-align: center;
+    margin: 30px 0 10px;
 }
 
-/* GRID */
+/* PRODUCTS GRID */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
     padding: 15px;
 }
 
-/* CARD */
+/* PRODUCT CARD */
 .card {
     background: #1a1a1a;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* IMAGE FIX */
-.card img {
-    width: 100%;
-    height: 180px;          /* 🔥 SAME HEIGHT */
-    object-fit: cover;      /* 🔥 NO STRETCH */
-}
-
-/* CONTENT */
-.card-content {
+    border-radius: 10px;
     padding: 10px;
     text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+.card p {
+    font-size: 13px;
+}
+
+.price {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.buy {
+    background: #ff9900;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
 }
 
 .badge {
     background: red;
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 3px 6px;
+    font-size: 10px;
     border-radius: 5px;
     display: inline-block;
     margin-bottom: 5px;
-}
-
-/* BUTTON */
-.buy {
-    background: #00ffcc;
-    border: none;
-    padding: 10px;
-    width: 90%;
-    border-radius: 6px;
-    margin: 10px auto;
-    cursor: pointer;
-}
-
-/* SECTIONS */
-.trust, .reviews, #about {
-    padding: 20px;
-    text-align: center;
-}
-
-a {
-    text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>Drew Gadgets</h1>
-<p>Your Trusted Plug 🔌</p>
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-left">
+        <img src="logo.png" class="logo">
+        <span class="brand">Drew Gadgets</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="#phones">Phones</a>
+        <a href="#laptops">Laptops</a>
+        <a href="#accessories">Accessories</a>
+    </nav>
+
+    <a href="https://wa.me/2348028412449" class="whatsapp-btn">WhatsApp</a>
 </header>
 
 <!-- PHONES -->
-<h2 class="section-title">📱 Phones</h2>
+<h2 id="phones" class="section-title">📱 Phones</h2>
 <section class="products">
 
 <div class="card">
 <img src="iphone16.jpg">
-<div class="card-content">
 <h3>iPhone 16 (128GB)</h3>
-<p>Clean • Face ID • 100%</p>
-<p><strong>₦700,000</strong></p>
-</div>
+<p>Clean • Face ID • 100% Battery</p>
+<div class="price">₦700,000</div>
 <a href="https://wa.me/2348028412449?text=I want iPhone 16">
-<button class="buy">Order Now</button>
-</a>
+<button class="buy">Order Now</button></a>
 </div>
 
 <div class="card">
 <img src="12pro.jpg">
-<div class="card-content">
-<span class="badge">🔥 HOT</span>
 <h3>iPhone 12 Pro (128GB)</h3>
-<p>Clean • Strong Battery</p>
-<p><strong>₦370,000</strong></p>
-</div>
+<p>Clean • Face ID • Strong Battery</p>
+<div class="price">₦370,000</div>
 <a href="https://wa.me/2348028412449?text=I want iPhone 12 Pro">
-<button class="buy">Order Now</button>
-</a>
-</div>
-
-<div class="card">
-<img src="iphone16promax.jpg">
-<div class="card-content">
-<h3>iPhone 16 Pro Max</h3>
-<p>BH 95% • eSIM</p>
-<p><strong>₦1,250,000</strong></p>
-</div>
-<a href="https://wa.me/2348028412449?text=I want iPhone 16 Pro Max">
-<button class="buy">Order Now</button>
-</a>
+<button class="buy">Order Now</button></a>
 </div>
 
 <div class="card">
 <img src="samsungs24ultra.jpg">
-<div class="card-content">
 <h3>Samsung S24 Ultra</h3>
-<p>Sharp Camera • Premium</p>
-<p><strong>₦760,000</strong></p>
-</div>
+<p>Premium • Sharp Camera • Fast</p>
+<div class="price">₦760,000</div>
 <a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
-<button class="buy">Order Now</button>
-</a>
+<button class="buy">Order Now</button></a>
 </div>
 
 <div class="card">
 <img src="samsungs22ultra.jpg">
-<div class="card-content">
-<h3>Samsung S22 Ultra</h3>
-<p>Flagship • Smooth</p>
-<p><strong>₦540,000</strong></p>
-</div>
+<h3>Samsung S22 Ultra (256GB)</h3>
+<p>Flagship • Smooth • Clean</p>
+<div class="price">₦540,000</div>
 <a href="https://wa.me/2348028412449?text=I want Samsung S22 Ultra">
-<button class="buy">Order Now</button>
-</a>
+<button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<img src="iphone17.jpg">
+<h3>iPhone 17 (256GB)</h3>
+<p>BH 98% • Physical SIM</p>
+<div class="price">₦1,250,000</div>
+<a href="https://wa.me/2348028412449?text=I want iPhone 17">
+<button class="buy">Order Now</button></a>
 </div>
 
 </section>
 
 <!-- LAPTOPS -->
-<h2 class="section-title">💻 Laptops</h2>
+<h2 id="laptops" class="section-title">💻 Laptops</h2>
 <section class="products">
 
 <div class="card">
+<div class="badge">HOT</div>
 <img src="alienware.jpg">
-<div class="card-content">
-<span class="badge">🔥 HOT</span>
 <h3>Alienware x17 R1</h3>
 <p>i7 • 32GB • RTX 3080</p>
-<p><strong>₦2,400,000</strong></p>
-</div>
+<div class="price">₦2,400,000</div>
 <a href="https://wa.me/2348028412449?text=I want Alienware x17">
-<button class="buy">Order Now</button>
-</a>
+<button class="buy">Order Now</button></a>
 </div>
 
 </section>
 
 <!-- ACCESSORIES -->
-<h2 class="section-title">🎧 Accessories</h2>
+<h2 id="accessories" class="section-title">🎧 Accessories</h2>
 <section class="products">
 
 <div class="card">
 <img src="accessories.jpg">
-<div class="card-content">
 <h3>Accessories</h3>
 <p>Chargers • AirPods • Cases</p>
-<p><strong>From ₦10,000</strong></p>
-</div>
+<div class="price">From ₦10,000</div>
 <a href="https://wa.me/2348028412449?text=I want Accessories">
-<button class="buy">Shop Now</button>
-</a>
+<button class="buy">Shop Now</button></a>
 </div>
 
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<h2>About Us</h2>
-<p>Drew Gadgets is your trusted plug for quality phones and gadgets.</p>
-</section>
-
-<!-- TRUST -->
-<section class="trust">
-<h3>Why Choose Us?</h3>
-<p>✅ Tested Devices</p>
-<p>🚚 Fast Delivery</p>
-<p>💯 No Hidden Issues</p>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews">
-<h3>⭐ Reviews</h3>
-<p>⭐⭐⭐⭐⭐ Trusted seller</p>
-<p>⭐⭐⭐⭐⭐ Fast delivery</p>
 </section>
 
 </body>
