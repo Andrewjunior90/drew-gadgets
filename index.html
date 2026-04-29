@@ -13,45 +13,54 @@ body {
     color: #fff;
 }
 
-/* HEADER */
+/* NAVBAR */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background: black;
-    padding: 10px 20px;
+    padding: 15px;
+    text-align: center;
 }
 
-.nav-left {
+/* TOP LOGO + NAME */
+.nav-top {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .logo {
-    width: 50px;
-    margin-right: 10px;
+    width: 70px; /* 🔥 bigger logo */
 }
 
 .brand {
-    font-size: 18px;
+    font-size: 24px; /* 🔥 bigger text */
     font-weight: bold;
+    margin-top: 5px;
+}
+
+/* NAV LINKS UNDER */
+.nav-links {
+    margin-top: 10px;
 }
 
 .nav-links a {
     margin: 0 10px;
     text-decoration: none;
     color: white;
+    font-size: 14px;
 }
 
+/* GREEN WHATSAPP BUTTON */
 .whatsapp-btn {
-    background: #007bff;
-    padding: 8px 12px;
+    display: inline-block;
+    margin-top: 10px;
+    background: #25D366;
+    padding: 8px 15px;
     border-radius: 5px;
     color: white;
     text-decoration: none;
 }
 
-/* SECTIONS */
+/* GRID */
 .section-title {
     text-align: center;
     margin-top: 30px;
@@ -78,6 +87,7 @@ body {
     border-radius: 10px;
 }
 
+/* BLUE BUY BUTTON */
 .buy {
     background: #007bff;
     border: none;
@@ -88,34 +98,50 @@ body {
     border-radius: 5px;
 }
 
+/* FLOATING WHATSAPP */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    border-radius: 50%;
+    padding: 15px;
+    text-align: center;
+}
+
+.floating-whatsapp img {
+    width: 30px;
+}
+
 /* ABOUT + REVIEWS */
 section {
     padding: 20px;
     text-align: center;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- NAVBAR -->
 <header class="navbar">
-    <div class="nav-left">
-        <img src="logo.png.jpg" class="logo">
-        <span class="brand">Drew Gadgets</span>
-    </div>
 
-    <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#phones">Phones</a>
-        <a href="#laptops">Laptops</a>
-        <a href="#accessories">Accessories</a>
-    </nav>
+<div class="nav-top">
+    <img src="logo.png.jpg" class="logo">
+    <div class="brand">Drew Gadgets</div>
+</div>
 
-    <a href="https://wa.me/2348028412449" class="whatsapp-btn">
-        Chat on WhatsApp
-    </a>
+<div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#phones">Phones</a>
+    <a href="#laptops">Laptops</a>
+    <a href="#accessories">Accessories</a>
+</div>
+
+<a href="https://wa.me/2348028412449" class="whatsapp-btn">
+    Chat on WhatsApp
+</a>
+
 </header>
 
 <!-- PHONES -->
@@ -124,42 +150,18 @@ section {
 
 <div class="card">
 <img src="iphone16.jpg">
-<h3>iPhone 16 (128GB)</h3>
-<p>Clean • Face ID • Battery 100%</p>
+<h3>iPhone 16</h3>
+<p>Clean • Face ID • 100%</p>
 <strong>₦700,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 16">
 <button class="buy">Order Now</button>
-</a>
 </div>
 
 <div class="card">
 <img src="12pro.jpg">
-<h3>iPhone 12 Pro (128GB)</h3>
+<h3>iPhone 12 Pro</h3>
 <p>Clean • Strong Battery</p>
 <strong>₦370,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 12 Pro">
 <button class="buy">Order Now</button>
-</a>
-</div>
-
-<div class="card">
-<img src="iphone17.jpg">
-<h3>iPhone 17 (256GB)</h3>
-<p>Physical SIM • BH 98%</p>
-<strong>₦1,250,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 17">
-<button class="buy">Order Now</button>
-</a>
-</div>
-
-<div class="card">
-<img src="samsungs24ultra.jpg">
-<h3>Samsung S24 Ultra</h3>
-<p>Premium • Sharp Camera</p>
-<strong>₦760,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
-<button class="buy">Order Now</button>
-</a>
 </div>
 
 </section>
@@ -170,12 +172,10 @@ section {
 
 <div class="card">
 <img src="alienware.jpg">
-<h3>Alienware x17 R1</h3>
-<p>i7 • 32GB RAM • RTX 3080</p>
+<h3>Alienware x17</h3>
+<p>i7 • 32GB • RTX 3080</p>
 <strong>₦2,400,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Alienware x17">
 <button class="buy">Order Now</button>
-</a>
 </div>
 
 </section>
@@ -189,30 +189,30 @@ section {
 <h3>Accessories</h3>
 <p>Chargers • AirPods • Cases</p>
 <strong>From ₦10,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Accessories">
 <button class="buy">Shop Now</button>
-</a>
 </div>
 
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section>
 <h2>About Us</h2>
 <p>Drew Gadgets is your trusted plug for quality phones and gadgets in Nigeria.</p>
-<p>We deliver nationwide and ensure all products are tested and verified.</p>
 <p><b>Email:</b> info@drewgadgets.com</p>
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews">
+<section>
 <h2>⭐ Customer Reviews</h2>
-
-<p>⭐⭐⭐⭐⭐ “Got my iPhone same day. Trusted seller!” — Chinedu Okafor</p>
-<p>⭐⭐⭐⭐⭐ “Everything works perfectly. Will buy again.” — Aisha Bello</p>
-<p>⭐⭐⭐⭐⭐ “Fast delivery and legit product.” — Tunde Adeyemi</p>
-
+<p>⭐⭐⭐⭐⭐ “Trusted plug!” — Chinedu Okafor</p>
+<p>⭐⭐⭐⭐⭐ “Fast delivery” — Aisha Bello</p>
+<p>⭐⭐⭐⭐⭐ “Very legit seller” — Tunde Adeyemi</p>
 </section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2348028412449" class="floating-whatsapp">
+<img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+</a>
 
 </body>
 </html>
