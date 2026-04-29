@@ -16,40 +16,30 @@ body {
 /* NAVBAR */
 .navbar {
     background: black;
-    padding: 15px;
     text-align: center;
-}
-
-/* TOP LOGO + NAME */
-.nav-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 15px;
 }
 
 .logo {
-    width: 70px; /* 🔥 bigger logo */
+    width: 75px;
 }
 
 .brand {
-    font-size: 24px; /* 🔥 bigger text */
+    font-size: 26px;
     font-weight: bold;
     margin-top: 5px;
 }
 
-/* NAV LINKS UNDER */
 .nav-links {
     margin-top: 10px;
 }
 
 .nav-links a {
     margin: 0 10px;
-    text-decoration: none;
     color: white;
-    font-size: 14px;
+    text-decoration: none;
 }
 
-/* GREEN WHATSAPP BUTTON */
 .whatsapp-btn {
     display: inline-block;
     margin-top: 10px;
@@ -87,7 +77,6 @@ body {
     border-radius: 10px;
 }
 
-/* BLUE BUY BUTTON */
 .buy {
     background: #007bff;
     border: none;
@@ -96,24 +85,20 @@ body {
     margin-top: 10px;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* FLOATING WHATSAPP */
-.floating-whatsapp {
+.float {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #25D366;
-    border-radius: 50%;
     padding: 15px;
-    text-align: center;
+    border-radius: 50%;
 }
 
-.floating-whatsapp img {
-    width: 30px;
-}
-
-/* ABOUT + REVIEWS */
+/* SECTIONS */
 section {
     padding: 20px;
     text-align: center;
@@ -126,20 +111,19 @@ section {
 <!-- NAVBAR -->
 <header class="navbar">
 
-<div class="nav-top">
-    <img src="logo.png.jpg" class="logo">
-    <div class="brand">Drew Gadgets</div>
-</div>
+<img src="logo.png.jpg" class="logo">
+<div class="brand">Drew Gadgets</div>
 
 <div class="nav-links">
     <a href="#">Home</a>
     <a href="#phones">Phones</a>
+    <a href="#tablets">Tablets</a>
     <a href="#laptops">Laptops</a>
     <a href="#accessories">Accessories</a>
 </div>
 
 <a href="https://wa.me/2348028412449" class="whatsapp-btn">
-    Chat on WhatsApp
+Chat on WhatsApp
 </a>
 
 </header>
@@ -153,7 +137,8 @@ section {
 <h3>iPhone 16</h3>
 <p>Clean • Face ID • 100%</p>
 <strong>₦700,000</strong>
-<button class="buy">Order Now</button>
+<a href="https://wa.me/2348028412449?text=I want iPhone 16">
+<button class="buy">Order Now</button></a>
 </div>
 
 <div class="card">
@@ -161,21 +146,65 @@ section {
 <h3>iPhone 12 Pro</h3>
 <p>Clean • Strong Battery</p>
 <strong>₦370,000</strong>
-<button class="buy">Order Now</button>
+<a href="https://wa.me/2348028412449?text=I want iPhone 12 Pro">
+<button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<img src="iphone17.jpg">
+<h3>iPhone 17</h3>
+<p>BH 98% • Physical SIM</p>
+<strong>₦1,250,000</strong>
+<a href="https://wa.me/2348028412449?text=I want iPhone 17">
+<button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<img src="samsungs24ultra.jpg">
+<h3>Samsung S24 Ultra</h3>
+<p>Premium • Sharp Camera</p>
+<strong>₦760,000</strong>
+<a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
+<button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<img src="samsungs22ultra.jpg">
+<h3>Samsung S22 Ultra</h3>
+<p>Flagship • Smooth</p>
+<strong>₦540,000</strong>
+<a href="https://wa.me/2348028412449?text=I want Samsung S22 Ultra">
+<button class="buy">Order Now</button></a>
 </div>
 
 </section>
 
-<!-- LAPTOPS -->
+<!-- TABLETS -->
+<h2 id="tablets" class="section-title">📱 Tablets</h2>
+<section class="products">
+
+<div class="card">
+<img src="ipad.jpg">
+<h3>iPad 10th Gen</h3>
+<p>WiFi • 64GB • Clean</p>
+<strong>₦450,000</strong>
+<a href="https://wa.me/2348028412449?text=I want iPad 10th Gen">
+<button class="buy">Order Now</button></a>
+</div>
+
+</section>
+
+<!-- LAPTOP -->
 <h2 id="laptops" class="section-title">💻 Laptops</h2>
 <section class="products">
 
 <div class="card">
 <img src="alienware.jpg">
-<h3>Alienware x17</h3>
+<h3>Alienware x17 R1</h3>
 <p>i7 • 32GB • RTX 3080</p>
 <strong>₦2,400,000</strong>
-<button class="buy">Order Now</button>
+<a href="https://wa.me/2348028412449?text=I want Alienware">
+<button class="buy">Order Now</button></a>
 </div>
 
 </section>
@@ -189,7 +218,8 @@ section {
 <h3>Accessories</h3>
 <p>Chargers • AirPods • Cases</p>
 <strong>From ₦10,000</strong>
-<button class="buy">Shop Now</button>
+<a href="https://wa.me/2348028412449?text=I want Accessories">
+<button class="buy">Shop Now</button></a>
 </div>
 
 </section>
@@ -204,14 +234,14 @@ section {
 <!-- REVIEWS -->
 <section>
 <h2>⭐ Customer Reviews</h2>
-<p>⭐⭐⭐⭐⭐ “Trusted plug!” — Chinedu Okafor</p>
-<p>⭐⭐⭐⭐⭐ “Fast delivery” — Aisha Bello</p>
-<p>⭐⭐⭐⭐⭐ “Very legit seller” — Tunde Adeyemi</p>
+<p>⭐⭐⭐⭐⭐ — Chinedu Okafor: Trusted plug!</p>
+<p>⭐⭐⭐⭐⭐ — Aisha Bello: Fast delivery.</p>
+<p>⭐⭐⭐⭐⭐ — Tunde Adeyemi: Very legit seller.</p>
 </section>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/2348028412449" class="floating-whatsapp">
-<img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+<a href="https://wa.me/2348028412449" class="float">
+<img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
 </a>
 
 </body>
