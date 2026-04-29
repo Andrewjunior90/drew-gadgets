@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drew Gadgets</title>
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
+header { display:flex; justify-content:space-between; padding:20px; }
+h1 { margin:0; }
+.hero { text-align:center; padding:40px 20px; }
+.products { display:grid; grid-template-columns:1fr; gap:20px; padding:20px; }
+.card { background:#111; padding:20px; border-radius:10px; }
+button { padding:10px; border:none; border-radius:6px; cursor:pointer; }
+.buy { background:#fff; color:#000; width:100%; }
+.whatsapp { background:#25D366; color:#000; }
+.contact { text-align:center; padding:40px; }
+@media(min-width:768px){
+  .products { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Drew Gadgets</h1>
+<a href="https://wa.me/2348139708568"><button class="whatsapp">WhatsApp</button></a>
+</header>
+
+<section class="hero">
+<h2>Premium Gadgets at Best Prices</h2>
+<p>iPhones, Laptops & Accessories</p>
+</section>
+
+<section class="products">
+
+<div class="card">
+<h3>iPhone 16 (128GB)</h3>
+<p>WiFi Only</p>
+<p><strong>₦700,000</strong></p>
+<a href="https://wa.me/2348139708568"><button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<h3>Alienware x17 R1</h3>
+<p>i7 11th Gen • 32GB • RTX 3080</p>
+<p><strong>₦2,400,000</strong></p>
+<a href="https://wa.me/2348139708568"><button class="buy">Order Now</button></a>
+</div>
+
+<div class="card">
+<h3>Accessories</h3>
+<p>Chargers, AirPods, Cases</p>
+<p><strong>From ₦10,000</strong></p>
+<a href="https://wa.me/2348139708568"><button class="buy">Shop Now</button></a>
+</div>
+
+</section>
+
+<section class="contact">
+<h3>Contact Us</h3>
+<p>Call or WhatsApp: 08139708568</p>
+</section>
+
+</body>
+</html>
