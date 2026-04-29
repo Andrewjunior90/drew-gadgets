@@ -6,11 +6,42 @@
 <title>Drew Gadgets</title>
 
   <style>
-    .product img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
+    <style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .product {
+    background: #111;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .product h3 {
+    margin: 10px 0;
+  }
+
+  .product button {
+    background: purple;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+</style>
     }
   </style>
 
