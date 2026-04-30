@@ -203,10 +203,9 @@ input, textarea {
   overflow:auto;
 ">
 <h2>🛒 Checkout</h2>
-
-<div id="checkoutItems"></div>
-
+    <div id="checkoutItems"></div>
 <h3 id="checkoutTotal">Total: ₦0</h3>
+
     <h3>Select Payment Method</h3>
 
 <button onclick="payWithPaystack()">Pay with Card / Transfer (Paystack)</button>
@@ -505,13 +504,25 @@ function removeFromCart(index){
   }
 /* GO TO CHECKOUT PAGE */
   function goToCheckout(){
-  if(cart.length === 0){
-    alert("No product selected");
-    return;
-  }
+    if(cart.length === 0){
+        alert("No product selected");
+        return;
+    }
 
-  document.getElementById("checkoutPage").style.display = "block";
-    renderCart();
+    let html = "";
+
+    cart.forEach((item, index) => {
+        html += `
+        <div class="cart-item">
+            <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
+        </div>
+        `;
+    });
+
+    document.getElementById("checkoutItems").innerHTML = html;
+    document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
+
+    document.getElementById("checkoutPage").style.display = "block";
   }
 /* CLOSE CHECKOUT */
 function closeCheckout(){
