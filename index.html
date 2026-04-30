@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drew Gadgets</title>
-
 <style>
 body {
   background:#000;
@@ -178,7 +177,20 @@ input, textarea {
 }
   </style>
 </head>
-<div id="checkoutPage" style="
+
+<body>
+
+<img src="logo.png.jpg" class="logo">
+<h1>Drew Gadgets</h1>
+
+<div class="nav-links">
+<a href="#phones">Phones</a>
+<a href="#tablets">Tablets</a>
+<a href="#laptops">Laptops</a>
+<a href="#accessories">Accessories</a>
+</div>
+
+  <div id="checkoutPage" style="
   display:none;
   position:fixed;
   top:0;
@@ -195,7 +207,20 @@ input, textarea {
 <div id="checkoutItems"></div>
 
 <h3 id="checkoutTotal">Total: ₦0</h3>
+    <h3>Select Payment Method</h3>
 
+<button onclick="payWithPaystack()">Pay with Card / Transfer (Paystack)</button>
+
+<hr>
+
+<div>
+  <h4>Bank Transfer / Opay</h4>
+  <p>Bank: Opay</p>
+  <p>Account Number: 8028412449</p>
+  <p>Name: Ifeanyi Andrew iheanacho</p>
+
+  <button onclick="sendProof()">Send Proof on WhatsApp</button>
+</div>
 <input id="cName" placeholder="Your Name">
 <input id="cPhone" placeholder="Phone Number">
 <textarea id="cAddress" placeholder="Delivery Address"></textarea>
@@ -204,19 +229,7 @@ input, textarea {
 
 <button onclick="closeCheckout()" style="background:red; margin-top:10px;">Cancel</button>
 
-</div>
-<body>
-
-<img src="logo.png.jpg" class="logo">
-<h1>Drew Gadgets</h1>
-
-<div class="nav-links">
-<a href="#phones">Phones</a>
-<a href="#tablets">Tablets</a>
-<a href="#laptops">Laptops</a>
-<a href="#accessories">Accessories</a>
-</div>
-
+  </div>
 <p>📧 <a href="mailto:iheanachoi71@gmail.com" style="color:#25D366;">iheanachoi71@gmail.com</a></p>
 
 <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
@@ -488,7 +501,50 @@ function placeOrder(){
 
   window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 }
-</script>
+  function payWithPaystack() {
+  let email = document.getElementById("cEmail")?.value || "customer@email.com";
 
+  let handler = PaystackPop.setup({
+    key: 'pk_test_93d7d641fce057117ee781', // your key
+    email: email,
+    amount: total * 100, // convert to kobo
+
+    callback: function(response) {
+  alert("Payment successful! Reference: " + response.reference);
+
+  // send order AFTER payment
+  placeOrder();
+
+  // clear cart
+  cart = [];
+  total = 0;
+  updateCartUI();
+    }
+
+    onClose: function() {
+      alert("Payment cancelled");
+    }
+  });
+
+  handler.openIframe();
+  }
+  function sendProof() {
+  let name = document.getElementById("cName").value;
+  let phone = document.getElementById("cPhone").value;
+  let address = document.getElementById("cAddress").value;
+
+  let msg = "🛒 ORDER DETAILS\n\n" +
+            cart.join("\n") +
+            "\n\n💰 Total: ₦" + total +
+            "\n👤 " + name +
+            "\n📞 " + phone +
+            "\n📍 " + address +
+            "\n\nI have paid via Opay.";
+
+  window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
+}
+  </script>
+  
+  <script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>
