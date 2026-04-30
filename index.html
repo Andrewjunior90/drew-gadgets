@@ -514,25 +514,22 @@ function closeCheckout(){
 }
 
 /* PLACE ORDER */
-function placeOrder(){
-  let name = document.getElementById("cName").value;
-  let phone = document.getElementById("cPhone").value;
-  let address = document.getElementById("cAddress").value;
+function placeOrder() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
 
-  if(!name || !phone || !address){
-    alert("Fill all details");
-    return;
+    if (!name || !phone || !address) {
+        alert("Fill all details");
+        return;
+    }
+
+    let msg = "ORDER:\n\n" +
+        cart.map(item => `${item.name} x${item.qty}`).join("\n") +
+        "\n\nTotal: ₦" + total;
+
+    window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
   }
-
-  let msg = "🛒 ORDER DETAILS\n\n" +
-            cart.join("\n") +
-            "\n\n💰 Total: ₦" + total +
-            "\n\n👤 " + name +
-            "\n📞 " + phone +
-            "\n📍 " + address;
-
-  window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
-}
   function payWithPaystack() {
   let email = document.getElementById("cEmail")?.value || "customer@email.com";
 
