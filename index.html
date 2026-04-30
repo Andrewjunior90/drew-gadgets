@@ -18,7 +18,21 @@ body {
 .logo {
   width:130px;
 }
+.cart-item {
+  background: #111;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
 
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 /* NAV */
 .nav-links a {
   margin:0 10px;
@@ -388,20 +402,57 @@ let total = 0;
 
 /* ADD TO CART */
 function addToCart(name, price, qtyId){
-  let qty = parseInt(document.getElementById(qtyId).value) || 1;
+  let qty = parseInt(document.getElementById(qtyId).value);
 
-  for(let i=0;i<qty;i++){
-    cart.push(name);
+  let existing = cart.find(item => item.name === name);
+
+  if(existing){
+    existing.qty += qty;
+  } else {
+    cart.push({ name, price, qty });
   }
 
   total += price * qty;
 
-  cartCount.innerText = cart.length;
-  totalDisplay.innerText = "Total: ₦" + total;
+  updateCartUI();
 }
+function removeFromCart(index){
+  let item = cart[index];
 
+  // subtract from total
+  total -= item.price * item.qty;
+
+  // remove item
+  cart.splice(index, 1);
+
+  updateCartUI();
+    }
+  function updateCartUI(){
+  let itemsHTML = "";
+
+  cart.forEach((item, index)=>{
+    itemsHTML += `
+  <div class="cart-item">
+    <span>${item.name} (x${item.qty}) - ₦${item.price}</span>
+    <button onclick="removeFromCart(${index})">❌</button>
+  </div>
+`;
+  });
+
+  document.getElementById("checkoutItems").innerHTML = itemsHTML;
+  document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
+
+  // update top cart display too (if you have it)
+  if(typeof cartCount !== "undefined"){
+    cartCount.innerText = cart.reduce((sum, item)=> sum + item.qty, 0);
+  }
+
+  if(typeof totalDisplay !== "undefined"){
+    totalDisplay.innerText = "Total: ₦" + total;
+  }
+  }
 /* GO TO CHECKOUT PAGE */
-function goToCheckout(){
+  function goToCheckout(){
   if(cart.length === 0){
     alert("No product selected");
     return;
@@ -409,14 +460,8 @@ function goToCheckout(){
 
   document.getElementById("checkoutPage").style.display = "block";
 
-  let itemsHTML = "";
-  cart.forEach(item=>{
-    itemsHTML += `<p>• ${item}</p>`;
-  });
-
-  document.getElementById("checkoutItems").innerHTML = itemsHTML;
-  document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
-}
+  updateCartUI(); // ✅ THIS replaces all that deleted code
+  }
 
 /* CLOSE CHECKOUT */
 function closeCheckout(){
