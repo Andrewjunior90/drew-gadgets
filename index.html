@@ -73,12 +73,25 @@ body {
 /* BUTTON */
 .product button {
   width:100%;
-  padding:10px;
-  background:#25D366;
+  padding:12px;
+  background:#007BFF; /* Main Blue */
   color:white;
   border:none;
   border-radius:10px;
-  margin-top:5px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s ease;
+}
+
+/* Hover effect (for desktop) */
+.product button:hover {
+  background:#0069d9;
+}
+
+/* Click / tap effect */
+.product button:active {
+  background:#0056b3;
+  transform:scale(0.97);
 }
 
 /* QTY */
@@ -136,7 +149,7 @@ input, textarea {
 
 <body>
 
-<img src="logo.png" class="logo">
+<img src="logo.jpg" class="logo">
 <h1>Drew Gadgets</h1>
 
 <div class="nav-links">
@@ -280,7 +293,7 @@ input, textarea {
 </div>
 
 <div class="product"><span class="badge">🔥</span>
-<img src="images/alienware.jpg">
+<img src="alienware.jpg">
 <h3>Alienware X17</h3>
 <p>₦2,400,000</p>
 <input type="number" id="q15" value="1">
