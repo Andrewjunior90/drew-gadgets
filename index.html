@@ -11,12 +11,28 @@ body {
   color:#fff;
   font-family:Arial;
   padding:15px;
+  text-align:center;
 }
 
-nav a {
-  margin-right:15px;
+/* LOGO */
+.logo {
+  width:130px;
+}
+
+/* NAV */
+.nav-links a {
+  margin:0 10px;
   color:#25D366;
   text-decoration:none;
+}
+
+/* SEARCH */
+#search {
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin:15px 0;
 }
 
 /* GRID */
@@ -57,23 +73,44 @@ nav a {
 /* BUTTON */
 .product button {
   width:100%;
-  padding:12px;
+  padding:10px;
   background:#25D366;
   color:white;
   border:none;
   border-radius:10px;
+  margin-top:5px;
 }
 
-/* FLOATING */
+/* QTY */
+.product input {
+  width:60px;
+  margin-top:5px;
+}
+
+/* CART */
 #cartBtn {
   position:fixed;
   bottom:20px;
   right:20px;
-  background:#25D366;
+  background:#fff;
+  color:#000;
   padding:15px;
   border-radius:50%;
+  font-weight:bold;
 }
 
+#cartCount {
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:red;
+  color:#fff;
+  border-radius:50%;
+  padding:3px 6px;
+  font-size:12px;
+}
+
+/* WHATSAPP */
 #whatsappBtn {
   position:fixed;
   bottom:90px;
@@ -99,171 +136,172 @@ input, textarea {
 
 <body>
 
+<img src="images/logo.png" class="logo">
 <h1>Drew Gadgets</h1>
 
-<nav>
-<a href="#about">About</a>
-<a href="#reviews">Reviews</a>
-<a href="#delivery">Delivery</a>
-</nav>
+<div class="nav-links">
+<a href="#phones">Phones</a>
+<a href="#tablets">Tablets</a>
+<a href="#laptops">Laptops</a>
+<a href="#accessories">Accessories</a>
+</div>
 
 <p>📧 <a href="mailto:iheanachoi71@gmail.com" style="color:#25D366;">iheanachoi71@gmail.com</a></p>
 
-<!-- ABOUT -->
-<div id="about" class="section">
-<h2>📌 About Us</h2>
-<p>Trusted plug for premium gadgets across Nigeria. Fast delivery, tested devices, best prices guaranteed.</p>
-</div>
+<input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
+
+<h3 id="totalDisplay">Total: ₦0</h3>
 
 <!-- PHONES -->
-<h2>📱 Phones</h2>
+<h2 id="phones">📱 Phones</h2>
 <div class="products">
 
 <div class="product"><span class="badge">🔥</span>
-<img src="images/17pm.jpg">
-<h3>iPhone 17 Pro Max (1TB)</h3>
+<img src="17pm.jpg">
+<h3>iPhone 17 Pro Max</h3>
 <p>₦2,950,000</p>
-<button onclick="addToCart('iPhone 17 Pro Max',2950000)">Order</button>
+<input type="number" id="q1" value="1" min="1">
+<button onclick="addToCart('iPhone 17 Pro Max',2950000,'q1')">Order</button>
 </div>
 
 <div class="product"><span class="badge">🔥</span>
-<img src="images/zfold.jpg">
-<h3>Samsung Z Fold 7 (512GB)</h3>
+<img src="images/zfold7.jpg">
+<h3>Z Fold 7</h3>
 <p>₦1,560,000</p>
-<button onclick="addToCart('Z Fold 7',1560000)">Order</button>
+<input type="number" id="q2" value="1" min="1">
+<button onclick="addToCart('Z Fold 7',1560000,'q2')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/iphone16.jpg">
-<h3>iPhone 16 (128GB)</h3>
+<h3>iPhone 16</h3>
 <p>₦700,000</p>
-<button onclick="addToCart('iPhone 16',700000)">Order</button>
+<input type="number" id="q3" value="1">
+<button onclick="addToCart('iPhone 16',700000,'q3')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/iphone12pro.jpg">
-<h3>iPhone 12 Pro (128GB)</h3>
+<h3>iPhone 12 Pro</h3>
 <p>₦370,000</p>
-<button onclick="addToCart('iPhone 12 Pro',370000)">Order</button>
+<input type="number" id="q4" value="1">
+<button onclick="addToCart('iPhone 12 Pro',370000,'q4')">Order</button>
 </div>
 
 <div class="product">
-<img src="images/12pm.jpg">
+<img src="images/iphone12promax.jpg">
 <h3>iPhone 12 Pro Max</h3>
-<p>₦480k - ₦530k</p>
-<button onclick="addToCart('iPhone 12 Pro Max',480000)">Order</button>
+<p>₦480k</p>
+<input type="number" id="q5" value="1">
+<button onclick="addToCart('iPhone 12 Pro Max',480000,'q5')">Order</button>
 </div>
 
 <div class="product">
-<img src="images/xr.jpg">
+<img src="images/iphonexr.jpg">
 <h3>iPhone XR</h3>
-<p>₦175k - ₦185k</p>
-<button onclick="addToCart('iPhone XR',175000)">Order</button>
+<p>₦175k</p>
+<input type="number" id="q6" value="1">
+<button onclick="addToCart('iPhone XR',175000,'q6')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/s24ultra.jpg">
-<h3>Samsung S24 Ultra</h3>
+<h3>S24 Ultra</h3>
 <p>₦760,000</p>
-<button onclick="addToCart('S24 Ultra',760000)">Order</button>
+<input type="number" id="q7" value="1">
+<button onclick="addToCart('S24 Ultra',760000,'q7')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/s22ultra.jpg">
-<h3>Samsung S22 Ultra</h3>
+<h3>S22 Ultra</h3>
 <p>₦540,000</p>
-<button onclick="addToCart('S22 Ultra',540000)">Order</button>
+<input type="number" id="q8" value="1">
+<button onclick="addToCart('S22 Ultra',540000,'q8')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/s26ultra.jpg">
-<h3>Samsung S26 Ultra</h3>
+<h3>S26 Ultra</h3>
 <p>₦1,700,000</p>
-<button onclick="addToCart('S26 Ultra',1700000)">Order</button>
-</div>
-
-<div class="product">
-<img src="images/iphone16promax.jpg">
-<h3>iPhone 16 Pro Max</h3>
-<p>₦1,250,000</p>
-<button onclick="addToCart('iPhone 16 Pro Max',1250000)">Order</button>
-</div>
-
-<div class="product">
-<img src="images/iphone17.jpg">
-<h3>iPhone 17 (256GB)</h3>
-<p>₦1,250,000</p>
-<button onclick="addToCart('iPhone 17',1250000)">Order</button>
+<input type="number" id="q9" value="1">
+<button onclick="addToCart('S26 Ultra',1700000,'q9')">Order</button>
 </div>
 
 </div>
 
 <!-- TABLETS -->
-<h2>📲 Tablets</h2>
+<h2 id="tablets">📲 Tablets</h2>
 <div class="products">
 
 <div class="product"><span class="badge">🔥</span>
 <img src="images/ipadpro-m5.jpg">
-<h3>iPad Pro M5 (1TB)</h3>
+<h3>iPad Pro M5</h3>
 <p>₦2,250,000</p>
-<button onclick="addToCart('iPad Pro M5',2250000)">Order</button>
+<input type="number" id="q10" value="1">
+<button onclick="addToCart('iPad Pro M5',2250000,'q10')">Order</button>
 </div>
 
 <div class="product"><span class="badge">🔥</span>
 <img src="images/ipadpro-m4.jpg">
-<h3>iPad Pro M4 (1TB)</h3>
+<h3>iPad Pro M4</h3>
 <p>₦1,800,000</p>
-<button onclick="addToCart('iPad Pro M4',1800000)">Order</button>
+<input type="number" id="q11" value="1">
+<button onclick="addToCart('iPad Pro M4',1800000,'q11')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/ipad10.jpg">
 <h3>iPad 10</h3>
-<p>Available</p>
-<button onclick="addToCart('iPad 10',300000)">Order</button>
+<input type="number" id="q12" value="1">
+<button onclick="addToCart('iPad 10',300000,'q12')">Order</button>
 </div>
 
 </div>
 
 <!-- LAPTOPS -->
-<h2>💻 Laptops</h2>
+<h2 id="laptops">💻 Laptops</h2>
 <div class="products">
 
 <div class="product">
-<img src="images/hpelite.jpg">
-<h3>HP Elitebook 1040 G9 x360</h3>
+<img src="images/hp.jpg">
+<h3>HP Elitebook G9</h3>
 <p>₦1,080,000</p>
-<button onclick="addToCart('HP Elitebook',1080000)">Order</button>
+<input type="number" id="q13" value="1">
+<button onclick="addToCart('HP Elitebook',1080000,'q13')">Order</button>
 </div>
 
 <div class="product">
 <img src="images/macbook.jpg">
-<h3>MacBook Pro M5 Max 16"</h3>
+<h3>MacBook Pro M5 Max</h3>
 <p>₦6,980,000</p>
-<button onclick="addToCart('MacBook Pro',6980000)">Order</button>
+<input type="number" id="q14" value="1">
+<button onclick="addToCart('MacBook',6980000,'q14')">Order</button>
 </div>
 
 <div class="product"><span class="badge">🔥</span>
 <img src="images/alienware.jpg">
-<h3>Alienware X17 R1</h3>
+<h3>Alienware X17</h3>
 <p>₦2,400,000</p>
-<button onclick="addToCart('Alienware',2400000)">Order</button>
+<input type="number" id="q15" value="1">
+<button onclick="addToCart('Alienware',2400000,'q15')">Order</button>
 </div>
 
 </div>
 
 <!-- ACCESSORIES -->
-<h2>🎧 Accessories</h2>
+<h2 id="accessories">🎧 Accessories</h2>
 <div class="products">
 <div class="product">
 <img src="images/accessories.jpg">
-<h3>Accessories Available</h3>
-<button onclick="addToCart('Accessories',50000)">Order</button>
+<h3>Accessories</h3>
+<input type="number" id="q16" value="1">
+<button onclick="addToCart('Accessories',50000,'q16')">Order</button>
 </div>
 </div>
 
 <!-- DELIVERY -->
-<div id="delivery" class="section">
+<div class="section">
 <h2>📦 Delivery Details</h2>
 <input id="name" placeholder="Your Name">
 <input id="phone" placeholder="Phone Number">
@@ -271,36 +309,55 @@ input, textarea {
 <button onclick="checkout()">Place Order</button>
 </div>
 
+<!-- ABOUT -->
+<div class="section">
+<h2>📌 About Us</h2>
+<p>Trusted plug for premium gadgets across Nigeria.</p>
+</div>
+
 <!-- REVIEWS -->
-<div id="reviews" class="section">
+<div class="section">
 <h2>⭐ Reviews</h2>
 <p>⭐⭐⭐⭐⭐ Chinedu (Lagos): Legit seller!</p>
 <p>⭐⭐⭐⭐⭐ Amaka (Owerri): Clean products!</p>
 <p>⭐⭐⭐⭐⭐ Tunde (Ibadan): Fast delivery!</p>
 </div>
 
-<!-- FLOAT -->
-<button id="cartBtn">🛒</button>
+<div id="cartBtn" onclick="checkout()">🛒 <span id="cartCount">0</span></div>
 <a id="whatsappBtn" href="https://wa.me/2348175734700">💬</a>
 
 <script>
 let cart = [];
 let total = 0;
 
-function addToCart(name, price){
-  cart.push(name);
-  total += price;
-  alert(name + " added");
+function addToCart(name, price, qtyId){
+  let qty = parseInt(document.getElementById(qtyId).value) || 1;
+
+  for(let i=0;i<qty;i++){
+    cart.push(name);
+  }
+
+  total += price * qty;
+
+  cartCount.innerText = cart.length;
+  totalDisplay.innerText = "Total: ₦" + total;
+}
+
+function searchProducts(){
+  let input = search.value.toLowerCase();
+  document.querySelectorAll(".product").forEach(p=>{
+    p.style.display = p.innerText.toLowerCase().includes(input) ? "block":"none";
+  });
 }
 
 function checkout(){
-  let msg = "Order:\n" + cart.join("\n") +
-            "\nTotal: ₦" + total +
-            "\nName: " + name.value +
-            "\nPhone: " + phone.value +
-            "\nAddress: " + address.value;
+  let msg = "🛒 ORDER\n\n"+cart.join("\n")+
+  "\n\n💰 Total: ₦"+total+
+  "\n👤 "+name.value+
+  "\n📞 "+phone.value+
+  "\n📍 "+address.value;
 
-  window.open("https://wa.me/2348175734700?text=" + encodeURIComponent(msg));
+  window.open("https://wa.me/2348175734700?text="+encodeURIComponent(msg));
 }
 </script>
 
