@@ -7,242 +7,302 @@
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+  padding:15px;
 }
 
-/* NAVBAR */
-.navbar {
-    background: black;
-    text-align: center;
-    padding: 15px;
-}
-
-.logo {
-    width: 75px;
-}
-
-.brand {
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-.nav-links {
-    margin-top: 10px;
-}
-
-.nav-links a {
-    margin: 0 10px;
-    color: white;
-    text-decoration: none;
-}
-
-.whatsapp-btn {
-    display: inline-block;
-    margin-top: 10px;
-    background: #25D366;
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
+nav a {
+  margin-right:15px;
+  color:#25D366;
+  text-decoration:none;
 }
 
 /* GRID */
-.section-title {
-    text-align: center;
-    margin-top: 30px;
-}
-
 .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    padding: 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.card {
-    background: #1a1a1a;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
+@media(min-width:768px){
+  .products {grid-template-columns:repeat(3,1fr);}
 }
 
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+/* CARD */
+.product {
+  background:#111;
+  padding:10px;
+  border-radius:15px;
+  position:relative;
 }
 
-.buy {
-    background: #007bff;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    margin-top: 10px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.product img {
+  width:100%;
+  border-radius:10px;
 }
 
-/* FLOATING WHATSAPP */
-.float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    padding: 15px;
-    border-radius: 50%;
+/* BADGE */
+.badge {
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:red;
+  padding:5px;
+  border-radius:6px;
+  font-size:12px;
 }
 
-/* SECTIONS */
-section {
-    padding: 20px;
-    text-align: center;
+/* BUTTON */
+.product button {
+  width:100%;
+  padding:12px;
+  background:#25D366;
+  color:white;
+  border:none;
+  border-radius:10px;
 }
+
+/* FLOATING */
+#cartBtn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+}
+
+#whatsappBtn {
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  text-decoration:none;
+}
+
+/* FORM */
+input, textarea {
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
+  border:none;
+}
+
+.section {margin-top:40px;}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
+<h1>Drew Gadgets</h1>
 
-<img src="logo.png.jpg" class="logo">
-<div class="brand">Drew Gadgets</div>
+<nav>
+<a href="#about">About</a>
+<a href="#reviews">Reviews</a>
+<a href="#delivery">Delivery</a>
+</nav>
 
-<div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#phones">Phones</a>
-    <a href="#tablets">Tablets</a>
-    <a href="#laptops">Laptops</a>
-    <a href="#accessories">Accessories</a>
-</div>
-
-<a href="https://wa.me/2348028412449" class="whatsapp-btn">
-Chat on WhatsApp
-</a>
-
-</header>
-
-<!-- PHONES -->
-<h2 id="phones" class="section-title">📱 Phones</h2>
-<section class="products">
-
-<div class="card">
-<img src="iphone16.jpg">
-<h3>iPhone 16</h3>
-<p>Clean • Face ID • 100%</p>
-<strong>₦700,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 16">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="12pro.jpg">
-<h3>iPhone 12 Pro</h3>
-<p>Clean • Strong Battery</p>
-<strong>₦370,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 12 Pro">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="iphone17.jpg">
-<h3>iPhone 17</h3>
-<p>BH 98% • Physical SIM</p>
-<strong>₦1,250,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPhone 17">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="samsungs24ultra.jpg">
-<h3>Samsung S24 Ultra</h3>
-<p>Premium • Sharp Camera</p>
-<strong>₦760,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Samsung S24 Ultra">
-<button class="buy">Order Now</button></a>
-</div>
-
-<div class="card">
-<img src="samsungs22ultra.jpg">
-<h3>Samsung S22 Ultra</h3>
-<p>Flagship • Smooth</p>
-<strong>₦540,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Samsung S22 Ultra">
-<button class="buy">Order Now</button></a>
-</div>
-
-</section>
-
-<!-- TABLETS -->
-<h2 id="tablets" class="section-title">📱 Tablets</h2>
-<section class="products">
-
-<div class="card">
-<img src="ipad.jpg">
-<h3>iPad 10th Gen</h3>
-<p>WiFi • 64GB • Clean</p>
-<strong>₦450,000</strong>
-<a href="https://wa.me/2348028412449?text=I want iPad 10th Gen">
-<button class="buy">Order Now</button></a>
-</div>
-
-</section>
-
-<!-- LAPTOP -->
-<h2 id="laptops" class="section-title">💻 Laptops</h2>
-<section class="products">
-
-<div class="card">
-<img src="alienware.jpg">
-<h3>Alienware x17 R1</h3>
-<p>i7 • 32GB • RTX 3080</p>
-<strong>₦2,400,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Alienware">
-<button class="buy">Order Now</button></a>
-</div>
-
-</section>
-
-<!-- ACCESSORIES -->
-<h2 id="accessories" class="section-title">🎧 Accessories</h2>
-<section class="products">
-
-<div class="card">
-<img src="accessories.jpg">
-<h3>Accessories</h3>
-<p>Chargers • AirPods • Cases</p>
-<strong>From ₦10,000</strong>
-<a href="https://wa.me/2348028412449?text=I want Accessories">
-<button class="buy">Shop Now</button></a>
-</div>
-
-</section>
+<p>📧 <a href="mailto:iheanachoi71@gmail.com" style="color:#25D366;">iheanachoi71@gmail.com</a></p>
 
 <!-- ABOUT -->
-<section>
-<h2>About Us</h2>
-<p>Drew Gadgets is your trusted plug for quality phones and gadgets in Nigeria.</p>
-<p><b>Email:</b> info@drewgadgets.com</p>
-</section>
+<div id="about" class="section">
+<h2>📌 About Us</h2>
+<p>Trusted plug for premium gadgets across Nigeria. Fast delivery, tested devices, best prices guaranteed.</p>
+</div>
+
+<!-- PHONES -->
+<h2>📱 Phones</h2>
+<div class="products">
+
+<div class="product"><span class="badge">🔥</span>
+<img src="images/17pm.jpg">
+<h3>iPhone 17 Pro Max (1TB)</h3>
+<p>₦2,950,000</p>
+<button onclick="addToCart('iPhone 17 Pro Max',2950000)">Order</button>
+</div>
+
+<div class="product"><span class="badge">🔥</span>
+<img src="images/zfold.jpg">
+<h3>Samsung Z Fold 7 (512GB)</h3>
+<p>₦1,560,000</p>
+<button onclick="addToCart('Z Fold 7',1560000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/iphone16.jpg">
+<h3>iPhone 16 (128GB)</h3>
+<p>₦700,000</p>
+<button onclick="addToCart('iPhone 16',700000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/iphone12pro.jpg">
+<h3>iPhone 12 Pro (128GB)</h3>
+<p>₦370,000</p>
+<button onclick="addToCart('iPhone 12 Pro',370000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/12pm.jpg">
+<h3>iPhone 12 Pro Max</h3>
+<p>₦480k - ₦530k</p>
+<button onclick="addToCart('iPhone 12 Pro Max',480000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/xr.jpg">
+<h3>iPhone XR</h3>
+<p>₦175k - ₦185k</p>
+<button onclick="addToCart('iPhone XR',175000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/s24ultra.jpg">
+<h3>Samsung S24 Ultra</h3>
+<p>₦760,000</p>
+<button onclick="addToCart('S24 Ultra',760000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/s22ultra.jpg">
+<h3>Samsung S22 Ultra</h3>
+<p>₦540,000</p>
+<button onclick="addToCart('S22 Ultra',540000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/s26ultra.jpg">
+<h3>Samsung S26 Ultra</h3>
+<p>₦1,700,000</p>
+<button onclick="addToCart('S26 Ultra',1700000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/iphone16promax.jpg">
+<h3>iPhone 16 Pro Max</h3>
+<p>₦1,250,000</p>
+<button onclick="addToCart('iPhone 16 Pro Max',1250000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/iphone17.jpg">
+<h3>iPhone 17 (256GB)</h3>
+<p>₦1,250,000</p>
+<button onclick="addToCart('iPhone 17',1250000)">Order</button>
+</div>
+
+</div>
+
+<!-- TABLETS -->
+<h2>📲 Tablets</h2>
+<div class="products">
+
+<div class="product"><span class="badge">🔥</span>
+<img src="images/ipadpro-m5.jpg">
+<h3>iPad Pro M5 (1TB)</h3>
+<p>₦2,250,000</p>
+<button onclick="addToCart('iPad Pro M5',2250000)">Order</button>
+</div>
+
+<div class="product"><span class="badge">🔥</span>
+<img src="images/ipadpro-m4.jpg">
+<h3>iPad Pro M4 (1TB)</h3>
+<p>₦1,800,000</p>
+<button onclick="addToCart('iPad Pro M4',1800000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/ipad10.jpg">
+<h3>iPad 10</h3>
+<p>Available</p>
+<button onclick="addToCart('iPad 10',300000)">Order</button>
+</div>
+
+</div>
+
+<!-- LAPTOPS -->
+<h2>💻 Laptops</h2>
+<div class="products">
+
+<div class="product">
+<img src="images/hpelite.jpg">
+<h3>HP Elitebook 1040 G9 x360</h3>
+<p>₦1,080,000</p>
+<button onclick="addToCart('HP Elitebook',1080000)">Order</button>
+</div>
+
+<div class="product">
+<img src="images/macbook.jpg">
+<h3>MacBook Pro M5 Max 16"</h3>
+<p>₦6,980,000</p>
+<button onclick="addToCart('MacBook Pro',6980000)">Order</button>
+</div>
+
+<div class="product"><span class="badge">🔥</span>
+<img src="images/alienware.jpg">
+<h3>Alienware X17 R1</h3>
+<p>₦2,400,000</p>
+<button onclick="addToCart('Alienware',2400000)">Order</button>
+</div>
+
+</div>
+
+<!-- ACCESSORIES -->
+<h2>🎧 Accessories</h2>
+<div class="products">
+<div class="product">
+<img src="images/accessories.jpg">
+<h3>Accessories Available</h3>
+<button onclick="addToCart('Accessories',50000)">Order</button>
+</div>
+</div>
+
+<!-- DELIVERY -->
+<div id="delivery" class="section">
+<h2>📦 Delivery Details</h2>
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<textarea id="address" placeholder="Delivery Address"></textarea>
+<button onclick="checkout()">Place Order</button>
+</div>
 
 <!-- REVIEWS -->
-<section>
-<h2>⭐ Customer Reviews</h2>
-<p>⭐⭐⭐⭐⭐ — Chinedu Okafor: Trusted plug!</p>
-<p>⭐⭐⭐⭐⭐ — Aisha Bello: Fast delivery.</p>
-<p>⭐⭐⭐⭐⭐ — Tunde Adeyemi: Very legit seller.</p>
-</section>
+<div id="reviews" class="section">
+<h2>⭐ Reviews</h2>
+<p>⭐⭐⭐⭐⭐ Chinedu (Lagos): Legit seller!</p>
+<p>⭐⭐⭐⭐⭐ Amaka (Owerri): Clean products!</p>
+<p>⭐⭐⭐⭐⭐ Tunde (Ibadan): Fast delivery!</p>
+</div>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/2348028412449" class="float">
-<img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
-</a>
+<!-- FLOAT -->
+<button id="cartBtn">🛒</button>
+<a id="whatsappBtn" href="https://wa.me/2348175734700">💬</a>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price){
+  cart.push(name);
+  total += price;
+  alert(name + " added");
+}
+
+function checkout(){
+  let msg = "Order:\n" + cart.join("\n") +
+            "\nTotal: ₦" + total +
+            "\nName: " + name.value +
+            "\nPhone: " + phone.value +
+            "\nAddress: " + address.value;
+
+  window.open("https://wa.me/2348175734700?text=" + encodeURIComponent(msg));
+}
+</script>
 
 </body>
 </html>
