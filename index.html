@@ -488,15 +488,20 @@ function removeFromCart(index){
     totalDisplay.innerText = "Total: ₦" + total;
   }
   }
-  function renderCart(){
+  function renderCart() {
     let html = "";
 
-    cart.forEach(item=>{
-        html += `<p>${item.name} x${item.qty} = ₦${item.price}</p>`;
+    cart.forEach((item, index) => {
+        html += `
+        <div class="cart-item">
+            <span>${item.name} (x${item.qty}) = ₦${item.price * item.qty}</span>
+            <button onclick="removeFromCart(${index})">❌</button>
+        </div>
+        `;
     });
 
-    document.getElementById("cartItems").innerHTML = html;
-    document.getElementById("total").innerText = "Total: ₦" + total;
+    document.getElementById("checkoutItems").innerHTML = html;
+    document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
   }
 /* GO TO CHECKOUT PAGE */
   function goToCheckout(){
