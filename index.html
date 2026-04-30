@@ -594,10 +594,10 @@ function placeOrder() {
   <!-- ALL YOUR HTML ABOVE -->
 
 <script>
-    let cart = [];
-    let total = 0;
+let cart = [];
+let total = 0;
 
-    function addToCart(name, price, qtyId){
+function addToCart(name, price, qtyId){
     let input = document.getElementById(qtyId);
 
     if(!input){
@@ -622,14 +622,78 @@ function placeOrder() {
 
     total += price * qty;
 
-    updateCartUI(); // ✅ correct
+    updateCartUI();
+
+    alert(name + " added to cart ✅");
+}
+
+function updateCartUI(){
+    let itemsHTML = "";
+
+    cart.forEach((item, index)=>{
+        itemsHTML += `
+        <div class="cart-item">
+            <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
+            <button onclick="removeFromCart(${index})">❌</button>
+        </div>
+        `;
+    });
+
+    document.getElementById("checkoutItems").innerHTML = itemsHTML;
+    document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
+
+    // update cart count
+    document.getElementById("cartCount").innerText =
+        cart.reduce((sum, item)=> sum + item.qty, 0);
+
+    // update top total
+    document.getElementById("totalDisplay").innerText =
+        "Total: ₦" + total;
+}
+
+function removeFromCart(index){
+    let item = cart[index];
+
+    total -= item.price * item.qty;
+    cart.splice(index, 1);
+
+    updateCartUI();
+}
+
+function goToCheckout() {
+    if (cart.length === 0) {
+        alert("No product selected");
+        return;
     }
-alert(name + " added to cart ✅");
-console.log(cart);
+
+    updateCartUI();
+
+    document.getElementById("checkoutPage").style.display = "block";
+}
+
+function closeCheckout(){
+    document.getElementById("checkoutPage").style.display = "none";
+}
+
+function placeOrder() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+
+    if (!name || !phone || !address) {
+        alert("Fill all details");
+        return;
     }
+
+    let msg = "ORDER:\n\n" +
+        cart.map(item => `${item.name} x${item.qty}`).join("\n") +
+        "\n\nTotal: ₦" + total +
+        "\n👤 " + name +
+        "\n📞 " + phone +
+        "\n📍 " + address;
+
+    window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
+}
 </script>
-  <button onclick="goToCheckout()">
-  🛒 Order (<span id="cartCount">0</span>)
-  </button>
 </body>
 </html>
