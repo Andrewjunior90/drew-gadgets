@@ -502,15 +502,27 @@ function removeFromCart(index){
     document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
   }
 /* GO TO CHECKOUT PAGE */
-  function goToCheckout(){
-    if(cart.length === 0){
-        alert("No product selected");
-        return;
-    }
+  function goToCheckout() {
+  if (cart.length === 0) {
+    alert("No product selected");
+    return;
+  }
 
-    renderCart(); // 👈 THIS is key
+  let html = "";
 
-    document.getElementById("checkoutPage").style.display = "block";
+  cart.forEach((item, index) => {
+    html += `
+      <div class="cart-item">
+        <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
+      </div>
+    `;
+  });
+
+  document.getElementById("checkoutItems").innerHTML = html;
+  document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
+
+  // 🔥 THIS IS THE MOST IMPORTANT LINE
+  document.getElementById("checkoutPage").style.display = "block";
   }
 /* CLOSE CHECKOUT */
 function closeCheckout(){
@@ -616,8 +628,8 @@ alert(name + " added to cart ✅");
 console.log(cart);
     }
 </script>
-  <button id="cartBtn" onclick="goToCheckout()">
-  🛒 Cart (<span id="cartCount">0</span>)
+  <button onclick="goToCheckout()">
+  🛒 Order (<span id="cartCount">0</span>)
   </button>
 </body>
 </html>
