@@ -610,8 +610,10 @@ function placeOrder() {
 
         total += price * qty;
 
-        alert(name + " added to cart ✅");
-        console.log(cart); // 👈 DEBUG
+renderCart(); // ✅ ADD THIS LINE
+
+alert(name + " added to cart ✅");
+console.log(cart);
     }
 </script>
   <button id="cartBtn" onclick="goToCheckout()">
