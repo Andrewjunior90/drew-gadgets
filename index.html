@@ -412,7 +412,6 @@ input, textarea {
 <script>
 let cart = [];
 let total = 0;
-
 function addToCart(name, price, qtyId){
     let input = document.getElementById(qtyId);
 
@@ -427,6 +426,19 @@ function addToCart(name, price, qtyId){
         alert("Enter a valid quantity");
         return;
     }
+
+    let existing = cart.find(item => item.name === name);
+
+    if(existing){
+        existing.qty += qty;
+    } else {
+        cart.push({ name, price, qty });
+    }
+
+    total += price * qty;
+
+    updateCartUI();
+}
 
     let existing = cart.find(item => item.name === name);
 
