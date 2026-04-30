@@ -580,5 +580,40 @@ function placeOrder() {
   </script>
   
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- ALL YOUR HTML ABOVE -->
+
+<script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price, qtyId){
+        let input = document.getElementById(qtyId);
+
+        if(!input){
+            alert("Quantity input missing");
+            return;
+        }
+
+        let qty = parseInt(input.value);
+
+        if(isNaN(qty) || qty <= 0){
+            alert("Enter valid quantity");
+            return;
+        }
+
+        let existing = cart.find(item => item.name === name);
+
+        if(existing){
+            existing.qty += qty;
+        } else {
+            cart.push({ name, price, qty });
+        }
+
+        total += price * qty;
+
+        alert(name + " added to cart ✅");
+        console.log(cart); // 👈 DEBUG
+    }
+</script>
 </body>
 </html>
