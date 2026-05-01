@@ -1,39 +1,45 @@
-const CACHE_NAME = "drew-gadgets-v1";
+const CACHE_NAME = "drew-gadgets-v2";
 
 const urlsToCache = [
   "/",
   "/index.html",
-  "/logo.png.jpg"
+  "/logo.png.jpg",
+  "/offline.html"
 ];
 
 // Install
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// Activate (cleanup old cache)
+// Activate
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.filter(key => key !== CACHE_NAME)
-            .map(key => caches.delete(key))
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        })
+      )
+    )
   );
 });
 
-// Fetch (serve from cache first)
+// Fetch (network first, fallback to cache, then offline page)
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
+    fetch(event.request)
+      .then(res => {
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, res.clone());
+          return res;
+        });
+      })
+      .catch(() => {
+        return caches.match(event.request)
+          .then(res => res || caches.match("/offline.html"));
       })
   );
 });
