@@ -530,6 +530,7 @@ function closeCheckout(){
 }
 
 /* PLACE ORDER */
+<script>
 function placeOrder() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
@@ -540,12 +541,38 @@ function placeOrder() {
         return;
     }
 
+    let order = {
+        id: Date.now(),
+        name,
+        phone,
+        address,
+        items: [...cart],
+        total,
+        date: new Date().toLocaleString()
+    };
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    alert("Order saved ✅");
+
+    // Send to WhatsApp
     let msg = "ORDER:\n\n" +
-        cart.map(item => `${item.name} x${item.qty}`).join("\n") +
-        "\n\nTotal: ₦" + total;
+        order.items.map(i => `${i.name} x${i.qty}`).join("\n") +
+        "\n\nTotal: ₦" + total +
+        "\n👤 " + name +
+        "\n📞 " + phone +
+        "\n📍 " + address;
 
     window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
-  }
+
+    // Clear cart
+    cart = [];
+    total = 0;
+    updateCartUI();
+}
+<script>
   function payWithPaystack() {
   let email = document.getElementById("cEmail")?.value || "customer@email.com";
 
@@ -695,5 +722,83 @@ function placeOrder() {
     window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 }
 </script>
+  <script>
+function openAdmin(){
+    document.getElementById("adminPage").style.display = "block";
+    loadOrders();
+}
+
+function closeAdmin(){
+    document.getElementById("adminPage").style.display = "none";
+}
+
+function loadOrders(){
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let html = "";
+
+    if(orders.length === 0){
+        html = "<p>No orders yet</p>";
+    }
+
+    orders.reverse().forEach((order, index)=>{
+        html += `
+        <div style="border:1px solid #555; padding:10px; margin:10px 0;">
+            <h4>Order ${index + 1}</h4>
+            <p><b>Name:</b> ${order.name}</p>
+            <p><b>Phone:</b> ${order.phone}</p>
+            <p><b>Address:</b> ${order.address}</p>
+            <p><b>Date:</b> ${order.date}</p>
+            <p><b>Total:</b> ₦${order.total}</p>
+            <p><b>Items:</b><br>
+                ${order.items.map(i => i.name + " x" + i.qty).join("<br>")}
+            </p>
+            <button onclick="deleteOrder(${order.id})" style="background:red;">
+                Delete
+            </button>
+        </div>
+        `;
+    });
+
+    document.getElementById("ordersList").innerHTML = html;
+}
+
+function deleteOrder(id){
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders = orders.filter(o => o.id !== id);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    loadOrders();
+}
+
+function clearOrders(){
+    localStorage.removeItem("orders");
+    loadOrders();
+}
+</script>
+  <button onclick="openAdmin()" style="margin-top:20px;">
+  📊 Admin Dashboard
+  </button>
+  <div id="adminPage" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+color:#fff;
+padding:20px;
+overflow:auto;
+z-index:9999;
+">
+
+<h2>📊 Admin Dashboard</h2>
+
+<div id="ordersList"></div>
+
+<br>
+<button onclick="closeAdmin()">Close</button>
+<button onclick="clearOrders()" style="background:red;">Clear All</button>
+
+  </div>
 </body>
 </html>
