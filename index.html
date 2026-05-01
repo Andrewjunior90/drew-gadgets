@@ -237,7 +237,7 @@ input, textarea {
 
 <!-- PHONES -->
 <h2 id="phones">📱 Phones</h2>
-<div class="products">
+<div id="productsContainer" class="products"></div>
 
 <div class="product"><span class="badge">🔥</span>
 <img src="17pm.jpg">
@@ -315,7 +315,7 @@ input, textarea {
 
 <!-- TABLETS -->
 <h2 id="tablets">📲 Tablets</h2>
-<div class="products">
+<div id="productsContainer" class="products"></div>
 
 <div class="product"><span class="badge">🔥</span>
 <img src="ipadpro11.jpg">
@@ -344,7 +344,7 @@ input, textarea {
 
 <!-- LAPTOPS -->
 <h2 id="laptops">💻 Laptops</h2>
-<div class="products">
+<div id="productsContainer" class="products"></div>
 
 <div class="product">
 <img src="hpelite.jpg">
@@ -374,7 +374,7 @@ input, textarea {
 
 <!-- ACCESSORIES -->
 <h2 id="accessories">🎧 Accessories</h2>
-<div class="products">
+<div id="productsContainer" class="products"></div>
 <div class="product">
 <img src="images/accessories.jpg">
 <h3>Accessories</h3>
@@ -721,6 +721,31 @@ function placeOrder() {
 
     window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 }
+  
+  async function loadProducts(){
+    let snapshot = await getDocs(collection(db, "products"));
+    let html = "";
+
+    snapshot.forEach(doc => {
+        let p = doc.data();
+
+        html += `
+        <div class="product">
+            <img src="${p.image}">
+            <h3>${p.name}</h3>
+            <p>₦${p.price}</p>
+
+            <input type="number" value="1" id="q${doc.id}">
+            <button onclick="addToCart('${p.name}', ${p.price}, 'q${doc.id}')">
+                Order
+            </button>
+        </div>
+        `;
+    });
+
+    document.getElementById("productsContainer").innerHTML = html;
+}
+  loadProducts();
 </script>
   <script>
 function openAdmin(){
@@ -773,6 +798,27 @@ function clearOrders(){
     localStorage.removeItem("orders");
     loadOrders();
 }
+    async function addProduct(){
+    let name = document.getElementById("pName").value;
+    let price = document.getElementById("pPrice").value;
+    let image = document.getElementById("pImage").value;
+    let category = document.getElementById("pCategory").value;
+
+    if(!name || !price || !image){
+        alert("Fill all fields");
+        return;
+    }
+
+    await addDoc(collection(db, "products"), {
+        name,
+        price: Number(price),
+        image,
+        category
+    });
+
+    alert("Product added ✅");
+    loadProducts(); // refresh
+}
 </script>
   <button onclick="openAdmin()" style="margin-top:20px;">
   📊 Admin Dashboard
@@ -792,7 +838,14 @@ z-index:9999;
 ">
 
 <h2>📊 Admin Dashboard</h2>
+<h3>Add Product</h3>
 
+<input id="pName" placeholder="Product Name">
+<input id="pPrice" placeholder="Price">
+<input id="pImage" placeholder="Image URL">
+<input id="pCategory" placeholder="Category (phones, laptops...)">
+
+<button onclick="addProduct()">Add Product</button>
 <div id="ordersList"></div>
 
 <br>
