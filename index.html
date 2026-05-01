@@ -724,12 +724,15 @@ function placeOrder() {
   
   async function loadProducts(){
     let snapshot = await getDocs(collection(db, "products"));
-    let html = "";
+
+    let phones = "";
+    let laptops = "";
+    let tablets = "";
 
     snapshot.forEach(doc => {
         let p = doc.data();
 
-        html += `
+        let productHTML = `
         <div class="product">
             <img src="${p.image}">
             <h3>${p.name}</h3>
@@ -741,10 +744,23 @@ function placeOrder() {
             </button>
         </div>
         `;
+
+        // 🔥 AUTO SORT
+        if(p.category === "phone"){
+            phones += productHTML;
+        }
+        else if(p.category === "laptop"){
+            laptops += productHTML;
+        }
+        else if(p.category === "tablet"){
+            tablets += productHTML;
+        }
     });
 
-    document.getElementById("productsContainer").innerHTML = html;
-}
+    document.getElementById("phonesContainer").innerHTML = phones;
+    document.getElementById("laptopsContainer").innerHTML = laptops;
+    document.getElementById("tabletsContainer").innerHTML = tablets;
+  }
   loadProducts();
 </script>
   <script>
@@ -843,8 +859,11 @@ z-index:9999;
 <input id="pName" placeholder="Product Name">
 <input id="pPrice" placeholder="Price">
 <input id="pImage" placeholder="Image URL">
-<input id="pCategory" placeholder="Category (phones, laptops...)">
-
+<select id="pCategory">
+  <option value="phone">Phone</option>
+  <option value="laptop">Laptop</option>
+  <option value="tablet">Tablet</option>
+</select>
 <button onclick="addProduct()">Add Product</button>
 <div id="ordersList"></div>
 
