@@ -1181,8 +1181,8 @@ document.getElementById("installBtn").addEventListener("click", async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
 
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log("User choice:", outcome);
+    const choice = await deferredPrompt.userChoice;
+    console.log("User choice:", choice.outcome);
 
     deferredPrompt = null;
   }
