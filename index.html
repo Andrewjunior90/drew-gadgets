@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drew Gadgets</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
 body {
   background:#000;
@@ -720,7 +721,14 @@ function placeOrder() {
 
     window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 }
-  
+function sendProof(){
+    let name = document.getElementById("cName").value;
+    let phone = document.getElementById("cPhone").value;
+
+    let msg = "Payment Proof\n\nName: " + name + "\nPhone: " + phone;
+
+    window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
+      }  
   async function loadProducts(){
     let snapshot = await getDocs(collection(db, "products"));
 
