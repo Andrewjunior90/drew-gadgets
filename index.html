@@ -728,7 +728,36 @@ function sendProof(){
     let msg = "Payment Proof\n\nName: " + name + "\nPhone: " + phone;
 
     window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
-      }  
+      } 
+  function payWithPaystack() {
+
+    let email = document.getElementById("cEmail")?.value || "customer@email.com";
+
+    if(total <= 0){
+        alert("Cart is empty");
+        return;
+    }
+
+    let handler = PaystackPop.setup({
+        key: 'pk_test_93d7d641fce057117ee781', // your key
+        email: email,
+        amount: total * 100, // kobo
+
+        callback: function(response) {
+            alert("Payment successful! Ref: " + response.reference);
+
+            // ✅ Save order after payment
+            placeOrder();
+        },
+
+        onClose: function(){
+            alert("Payment cancelled");
+        }
+    });
+
+    // 🔥 THIS LINE WAS MISSING
+    handler.openIframe();
+  }
   async function loadProducts(){
     let snapshot = await getDocs(collection(db, "products"));
 
