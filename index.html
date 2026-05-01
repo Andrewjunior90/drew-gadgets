@@ -178,6 +178,14 @@ input, textarea {
   color:#fff;
   font-weight:bold;
 }
+  .item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.item:hover {
+  background: #f9f9f9;
+}
   </style>
 </head>
 
@@ -193,6 +201,7 @@ border-bottom:1px solid #222;
 
   <h2 style="margin:0;">🛍️ Drew Gadgets</h2>
 <p id="welcomeUser"></p>
+    <button onclick="openSettings()">⚙️</button>
 </div>
 
 <!-- ✅ LOADER (FIRST THING) -->
@@ -242,6 +251,26 @@ z-index:9998;
   </button>
 
 </div> 
+  <div id="settingsPage" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#000;
+color:#fff;
+z-index:9999;
+padding:20px;
+">
+
+<h2>⚙️ Settings</h2>
+
+<p id="userInfo"></p>
+
+<button onclick="logoutUser()" style="background:red;">Logout</button>
+<br><br>
+<button onclick="closeSettings()">Close</button>
+
+</div>
 <!-- rest of your site -->
 <button id="installBtn" style="display:none; padding:10px;">Install App</button>
 <img src="logo.png.jpg" class="logo">
@@ -256,7 +285,17 @@ z-index:9998;
 <a href="#laptops">Laptops</a>
 <a href="#accessories">Accessories</a>
 </div>
-
+  <button onclick="logoutUser()" style="
+margin-top:10px;
+padding:10px;
+background:red;
+color:#fff;
+border:none;
+border-radius:5px;
+">
+  🚪 Logout
+  </button>
+<button onclick="openOrderHistory()">Orders</button>
   <div id="checkoutPage" style="
   display:none;
   position:fixed;
@@ -777,7 +816,14 @@ function placeOrder() {
         alert("Fill all details");
         return;
     }
-
+const order = {
+  userName: user.name,
+  userPhone: user.phone,
+  items: cart,
+  total: ...,
+  date: new Date().toLocaleString(),
+  status: "Processing" // ✅ ADD THIS
+};
     let msg = "ORDER:\n\n" +
         cart.map(item => `${item.name} x${item.qty}`).join("\n") +
         "\n\nTotal: ₦" + total +
@@ -892,6 +938,11 @@ function loadOrders(){
             <p><b>Address:</b> ${order.address}</p>
             <p><b>Date:</b> ${order.date}</p>
             <p><b>Total:</b> ₦${order.total}</p>
+            <select onchange="updateStatus(${index}, this.value)">
+  <option>Processing</option>
+  <option>Shipped</option>
+  <option>Delivered</option>
+</select>
             <p><b>Items:</b><br>
                 ${order.items.map(i => i.name + " x" + i.qty).join("<br>")}
             </p>
@@ -911,6 +962,12 @@ function deleteOrder(id){
     localStorage.setItem("orders", JSON.stringify(orders));
     loadOrders();
 }
+    function updateStatus(index, status) {
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders[index].status = status;
+  localStorage.setItem("orders", JSON.stringify(orders));
+  loadOrders();
+    }
 
 function clearOrders(){
     localStorage.removeItem("orders");
@@ -947,7 +1004,28 @@ function loginUser() {
     alert("Please fill all fields");
     return;
   }
+}
+    
+function openAccount() {
+  const user = JSON.parse(localStorage.getItem("drewUser"));
 
+  if (!user) {
+    document.getElementById("loginPage").style.display = "flex";
+    return;
+  }
+
+  document.getElementById("accountPage").style.display = "block";
+
+  document.getElementById("accName").innerText =
+    "Welcome " + user.name + "!";
+
+  document.getElementById("accEmail").innerText =
+    user.phone;
+}
+
+function closeAccount() {
+  document.getElementById("accountPage").style.display = "none";
+}
   const user = { name, phone };
 
   localStorage.setItem("drewUser", JSON.stringify(user));
@@ -963,8 +1041,94 @@ window.addEventListener("load", () => {
     document.getElementById("loginPage").style.display = "none";
   }
 });
+    function openWhatsApp() {
+  window.open("https://wa.me/2348028412449", "_blank");
+}
 </script>
-  <button onclick="openAdmin()" style="margin-top:20px;">
+  <div id="adminLoginPage" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#000;
+color:#fff;
+z-index:9999;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+">
+
+<h2>🔐 Admin Login</h2>
+
+<input id="adminPass" placeholder="Enter password" style="padding:10px; margin:10px;">
+
+<button onclick="loginAdmin()">Login</button>
+
+</div>
+  <div id="accountPage" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#f5f5f5;
+z-index:9999;
+overflow:auto;
+font-family:Arial;
+">
+
+<!-- TOP BAR -->
+<div style="background:#fff; padding:15px;">
+  <input placeholder="Search Drew Gadgets"
+    style="width:100%; padding:10px; border-radius:5px; border:1px solid #ddd;">
+</div>
+
+<!-- USER INFO -->
+<div style="background:#fff; padding:15px; margin-top:5px;">
+  <h3 id="accName">Welcome!</h3>
+  <p id="accEmail" style="color:orange;"></p>
+
+  <div style="display:flex; gap:10px; margin-top:10px;">
+    <button style="flex:1; background:#f68b1e; color:#fff; border:none; padding:10px;">
+      Live Chat
+    </button>
+
+    <button style="flex:1; background:#fff; border:1px solid green; color:green; padding:10px;"
+      onclick="openWhatsApp()">
+      WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- HELP -->
+<div style="margin-top:10px; background:#fff; padding:10px;">
+  <p><b>Help & Support</b></p>
+</div>
+
+<!-- ACCOUNT OPTIONS -->
+<div style="background:#fff; margin-top:5px;">
+
+  <div onclick="openOrderHistory()" class="item">📦 Orders</div>
+  <div class="item">📥 Inbox</div>
+  <div class="item">⭐ Ratings & Reviews</div>
+  <div class="item">🎟️ Vouchers</div>
+  <div class="item">❤️ Wishlist</div>
+  <div class="item">👀 Recently Viewed</div>
+
+</div>
+
+<!-- SETTINGS -->
+<div style="background:#fff; margin-top:10px;">
+
+  <div class="item">💳 Payment Settings</div>
+  <div class="item">📍 Address Book</div>
+  <div onclick="openSettings()" class="item">⚙️ Account Management</div>
+  <div onclick="logoutUser()" class="item" style="color:red;">🚪 Logout</div>
+
+</div>
+
+</div>
+  <button onclick="openAdminLogin()">📊 Admin</button>
   📊 Admin Dashboard
   </button>
   <div id="adminPage" style="
@@ -1000,6 +1164,24 @@ z-index:9999;
 <button onclick="clearOrders()" style="background:red;">Clear All</button>
 
   </div>
+  <div id="orderHistoryPage" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#000;
+color:#fff;
+z-index:9999;
+padding:20px;
+overflow:auto;
+">
+
+<h2>📦 My Orders</h2>
+<div id="userOrders"></div>
+
+<button onclick="closeOrderHistory()">Close</button>
+
+</div>
   <script>
 // ✅ Service Worker
 if ("serviceWorker" in navigator) {
@@ -1027,6 +1209,74 @@ document.getElementById("installBtn").addEventListener("click", async () => {
     deferredPrompt = null;
   }
 });
+    });
+
+function logoutUser() {
+  localStorage.removeItem("drewUser");
+  location.reload();
+}
+1048 });
+
+// ✅ ADD HERE
+
+function openOrderHistory() {
+  const user = JSON.parse(localStorage.getItem("drewUser"));
+  const orders = JSON.parse(localStorage.getItem("drewOrders")) || [];
+
+  const container = document.getElementById("userOrders");
+  container.innerHTML = "";
+
+  const myOrders = orders.filter(o => o.userPhone === user.phone);
+
+  if (myOrders.length === 0) {
+    container.innerHTML = "<p>No orders yet</p>";
+  }
+
+  myOrders.forEach(order => {
+    let items = order.items.map(i => `<li>${i.name}</li>`).join("");
+
+    container.innerHTML += `
+      <div style="background:#111; padding:10px; margin:10px 0;">
+        <ul>${items}</ul>
+        <p>Total: ₦${order.total}</p>
+        <p>Status: ${order.status || "Processing"}</p>
+      </div>
+    `;
+  });
+
+  document.getElementById("orderHistoryPage").style.display = "block";
+}
+
+function closeOrderHistory() {
+  document.getElementById("orderHistoryPage").style.display = "none";
+  function openAdminLogin() {
+  document.getElementById("adminLoginPage").style.display = "flex";
+}
+
+function loginAdmin() {
+  const pass = document.getElementById("adminPass").value;
+
+  if (pass === "2001") { // 🔥 change this
+    document.getElementById("adminLoginPage").style.display = "none";
+    openAdmin();
+  } else {
+    alert("Wrong password");
+  }
+
+}
+
+   <script>
+function openSettings() {
+  const user = JSON.parse(localStorage.getItem("drewUser"));
+
+  document.getElementById("settingsPage").style.display = "block";
+  document.getElementById("userInfo").innerText =
+    "Name: " + user.name + "\nPhone: " + user.phone;
+}
+
+function closeSettings() {
+  document.getElementById("settingsPage").style.display = "none";
+    }
     const savedUser = JSON.parse(localStorage.getItem("drewUser"));
 if (savedUser) {
   document.getElementById("welcomeUser").innerText =
@@ -1036,6 +1286,29 @@ if (savedUser) {
 window.addEventListener("load", () => {
   document.getElementById("loader").style.display = "none";
 });
+    function logoutUser() {
+  localStorage.removeItem("drewUser");
+  location.reload();
+}
   </script>
+  <div style="
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#fff;
+display:flex;
+justify-content:space-around;
+padding:10px 0;
+border-top:1px solid #ddd;
+z-index:9999;
+">
+
+  <div onclick="closeAccount()">🏠<br>Home</div>
+  <div>📂<br>Categories</div>
+  <div onclick="openCart()">🛒<br>Cart</div>
+  <div onclick="openAccount()" style="color:orange;">👤<br>Account</div>
+
+</div>
 </body>
 </html>
