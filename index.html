@@ -1174,6 +1174,7 @@ font-family:Arial;
   <div class="item">⭐ Ratings & Reviews</div>
   <div class="item">🎟️ Vouchers</div>
   <div class="item">❤️ Wishlist</div>
+  <div onclick="openOrderHistory()" class="item">📦 Orders</div>
   <div class="item">👀 Recently Viewed</div>
 
 </div>
@@ -1341,7 +1342,7 @@ function closeOrderHistory() {
   document.getElementById("orderHistoryPage").style.display = "none";
 }
 </script>  
-  
+  <p>📧 <a href="mailto:iheanachoi71@gmail.com" style="color:#25D366;">info@drewgadget.com</a></p>
 <div class="bottom-nav">
 
   <div class="nav-item active" onclick="closeAccount()">
@@ -1359,13 +1360,10 @@ function closeOrderHistory() {
     <small>Cart</small>
     <b id="cartCountBadge">0</b>
   </div>
-
   <div class="nav-item" onclick="openAccount()">
     <span>👤</span>
     <small>Account</small>
   </div>
-
 </div>
-  <p>📧 <a href="mailto:iheanachoi71@gmail.com" style="color:#25D366;">info@drewgadget.com</a></p>
 </body>
 </html>
