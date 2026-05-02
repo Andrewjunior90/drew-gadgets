@@ -502,9 +502,19 @@ padding:15px;
 <img src="zfold.jpg">
 <h3>Z Fold 7</h3>
 <p>₦1,560,000</p>
-<input type="number" id="q2" value="1" min="1">
-<button onclick="event.stopPropagation(); addToCart('Z Fold 7',1560000,'q2')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q2')">➖</button>
+  <span id="q2">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q2')">➕</button>
 </div>
+
+<button onclick="event.stopPropagation(); addToCartQty('Z Fold 7',1560000,'q2')">
+Order
+</button>
+</div>
+
+
 <!-- iPhone 16 -->
 <div class="product" onclick="openProductDetails(
 'iPhone 16',
@@ -515,9 +525,18 @@ padding:15px;
 <img src="iphone16.jpg">
 <h3>iPhone 16</h3>
 <p>₦700,000</p>
-<input type="number" id="q3" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPhone 16',700000,'q3')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q3')">➖</button>
+  <span id="q3">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q3')">➕</button>
 </div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPhone 16',700000,'q3')">
+Order
+</button>
+</div>
+
 
 <!-- iPhone 12 Pro -->
 <div class="product" onclick="openProductDetails(
@@ -529,9 +548,18 @@ padding:15px;
 <img src="12pro.jpg">
 <h3>iPhone 12 Pro</h3>
 <p>₦370,000</p>
-<input type="number" id="q4" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPhone 12 Pro',370000,'q4')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q4')">➖</button>
+  <span id="q4">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q4')">➕</button>
 </div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPhone 12 Pro',370000,'q4')">
+Order
+</button>
+</div>
+
 
 <!-- iPhone 12 Pro Max -->
 <div class="product" onclick="openProductDetails(
@@ -543,9 +571,18 @@ padding:15px;
 <img src="12pm.jpg">
 <h3>iPhone 12 Pro Max</h3>
 <p>₦480,000</p>
-<input type="number" id="q5" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPhone 12 Pro Max',480000,'q5')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q5')">➖</button>
+  <span id="q5">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q5')">➕</button>
 </div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPhone 12 Pro Max',480000,'q5')">
+Order
+</button>
+</div>
+
 
 <!-- iPhone XR -->
 <div class="product" onclick="openProductDetails(
@@ -557,8 +594,16 @@ padding:15px;
 <img src="xr.jpg">
 <h3>iPhone XR</h3>
 <p>₦175,000</p>
-<input type="number" id="q6" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPhone XR',175000,'q6')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q6')">➖</button>
+  <span id="q6">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q6')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPhone XR',175000,'q6')">
+Order
+</button>
 </div>
 
 <!-- S24 Ultra -->
