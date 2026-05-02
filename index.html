@@ -981,22 +981,23 @@ function addToCart(name, price, qtyId){
 }
 function increaseQty(id) {
   let el = document.getElementById(id);
-  let value = parseInt(el.innerText);
-  el.innerText = value + 1;
+  let value = parseInt(el.textContent);
+  el.textContent = value + 1;
 }
 
 function decreaseQty(id) {
   let el = document.getElementById(id);
-  let value = parseInt(el.innerText);
+  let value = parseInt(el.textContent);
   if (value > 1) {
-    el.innerText = value - 1;
+    el.textContent = value - 1;
   }
 }
 
 function addToCartQty(name, price, id) {
-  let qty = parseInt(document.getElementById(id).innerText);
+  let qty = parseInt(document.getElementById(id).textContent);
   addToCart(name, price, qty);
 }
+
 function updateCartUI(){
     let itemsHTML = "";
 
