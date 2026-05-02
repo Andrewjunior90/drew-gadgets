@@ -622,32 +622,49 @@ padding:15px;
 
 <!-- LAPTOPS -->
 <h2 id="laptops">💻 Laptops</h2>
-<div id="productsContainer" class="products"></div>
 
-<div class="product">
+<!-- HP Elitebook G9 -->
+<div class="product" onclick="openProductDetails(
+'HP Elitebook G9',
+1080000,
+'hpelite.jpg',
+'• Intel Core i7 (12th Gen)\n• 16GB RAM\n• 512GB SSD\n• 14-inch FHD Display\n• Fingerprint + Windows 11'
+)">
 <img src="hpelite.jpg">
 <h3>HP Elitebook G9</h3>
 <p>₦1,080,000</p>
 <input type="number" id="q13" value="1">
-<button onclick="addToCart('HP Elitebook',1080000,'q13')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('HP Elitebook G9',1080000,'q13')">Order</button>
 </div>
 
-<div class="product">
+<!-- MacBook Pro M5 Max -->
+<div class="product" onclick="openProductDetails(
+'MacBook Pro M5 Max',
+6980000,
+'macbook.jpg',
+'• Apple M5 Max chip\n• 32GB RAM\n• 1TB SSD\n• 16-inch Retina Display\n• macOS + Touch ID'
+)">
 <img src="macbook.jpg">
 <h3>MacBook Pro M5 Max</h3>
 <p>₦6,980,000</p>
 <input type="number" id="q14" value="1">
-<button onclick="addToCart('MacBook',6980000,'q14')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('MacBook Pro M5 Max',6980000,'q14')">Order</button>
 </div>
 
-<div class="product"><span class="badge">🔥</span>
+<!-- Alienware X17 -->
+<div class="product" onclick="openProductDetails(
+'Alienware X17',
+2400000,
+'alienware.jpg',
+'• Intel Core i7 (11th Gen)\n• 32GB RAM\n• 1TB SSD\n• RTX 3080 (16GB)\n• 17-inch FHD Gaming Display'
+)">
+<span class="badge">🔥</span>
 <img src="alienware.jpg">
 <h3>Alienware X17</h3>
 <p>₦2,400,000</p>
 <input type="number" id="q15" value="1">
-<button onclick="addToCart('Alienware',2400000,'q15')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('Alienware X17',2400000,'q15')">Order</button>
 </div>
-
 </div>
 
 <!-- ACCESSORIES -->
