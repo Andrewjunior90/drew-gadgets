@@ -1160,7 +1160,7 @@ overflow:auto;
 <button onclick="closeOrderHistory()">Close</button>
 
 </div>
-  <script>
+<script>
 // ✅ Service Worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js")
@@ -1174,43 +1174,67 @@ window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
 
-  document.getElementById("installBtn").style.display = "block";
+  const btn = document.getElementById("installBtn");
+  if (btn) btn.style.display = "block";
 });
 
-document.getElementById("installBtn").addEventListener("click", async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
+const installBtn = document.getElementById("installBtn");
+if (installBtn) {
+  installBtn.addEventListener("click", async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
 
-    const result = await deferredPrompt.userChoice;
-    console.log("User choice:", result.outcome);
+      const result = await deferredPrompt.userChoice;
+      console.log("User choice:", result.outcome);
 
-    deferredPrompt = null;
-  }
+      deferredPrompt = null;
+    }
+  });
+}
+
+// ✅ LOADER FIX
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) loader.style.display = "none";
 });
 
+// ✅ ACCOUNT
 function logoutUser() {
   localStorage.removeItem("drewUser");
   location.reload();
 }
-});
 
-// ✅ ADD HERE
+// ✅ FIX NAV BUTTONS
+function openCart() {
+  document.getElementById("checkoutPage").style.display = "block";
+}
 
+function openAccount() {
+  document.getElementById("accountPage").style.display = "block";
+}
+
+function closeAccount() {
+  document.getElementById("accountPage").style.display = "none";
+}
+
+// ✅ ORDER HISTORY
 function openOrderHistory() {
   const user = JSON.parse(localStorage.getItem("drewUser"));
-  const orders = JSON.parse(localStorage.getItem("drewOrders")) || [];
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
 
   const container = document.getElementById("userOrders");
   container.innerHTML = "";
 
-  const myOrders = orders.filter(o => o.userPhone === user.phone);
+  if (!user) return;
+
+  const myOrders = orders.filter(o => o.phone === user.phone);
 
   if (myOrders.length === 0) {
     container.innerHTML = "<p>No orders yet</p>";
   }
 
   myOrders.forEach(order => {
-    let items = order.items.map(i => `<li>${i.name}</li>`).join("");
+    let items = order.items.map(i => `<li>${i.name} x${i.qty}</li>`).join("");
 
     container.innerHTML += `
       <div style="background:#111; padding:10px; margin:10px 0;">
@@ -1226,53 +1250,10 @@ function openOrderHistory() {
 
 function closeOrderHistory() {
   document.getElementById("orderHistoryPage").style.display = "none";
+}
+</script>  
   
-}
-  
-function openSettings() {
-  const user = JSON.parse(localStorage.getItem("drewUser"));
-
-  document.getElementById("settingsPage").style.display = "block";
-  document.getElementById("userInfo").innerText =
-    "Name: " + user.name + "\nPhone: " + user.phone;
-}
-
-function closeSettings() {
-  document.getElementById("settingsPage").style.display = "none";
-    }
-    const savedUser = JSON.parse(localStorage.getItem("drewUser"));
-if (savedUser) {
-  document.getElementById("welcomeUser").innerText =
-    "Welcome, " + savedUser.name + " 👋";
-}
-    // LOADER
-window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
-    if (loader) {
-      loader.style.display = "none";
-    }
-  });
-    function logoutUser() {
-  localStorage.removeItem("drewUser");
-  location.reload();
-}
-    let adminTapCount = 0;
-
-function secretAdminAccess() {
-  adminTapCount++;
-
-  if (adminTapCount === 5) {
-    openAdminLogin(); // open login after 5 taps
-    adminTapCount = 0;
-  }
-
-  setTimeout(() => {
-    adminTapCount = 0;
-  }, 2000);
-}
-  
-  </script>
-  <div style="
+<div style="
 position:fixed;
 bottom:0;
 left:0;
@@ -1286,7 +1267,7 @@ z-index:9999;
 ">
 
   <div onclick="closeAccount()">🏠<br>Home</div>
-  <div>📂<br>Categories</div>
+  <div onclick="alert('Coming soon')">📂<br>Categories</div>
   <div onclick="openCart()">🛒<br>Cart</div>
   <div onclick="openAccount()" style="color:orange;">👤<br>Account</div>
 
