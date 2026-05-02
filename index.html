@@ -472,62 +472,103 @@ padding:15px;
 <button onclick="addToCart('Z Fold 7',1560000,'q2')">Order</button>
 </div>
 
-<div class="product">
+<!-- iPhone 16 -->
+<div class="product" onclick="openProductDetails(
+'iPhone 16',
+700000,
+'iphone16.jpg',
+'• 6.1-inch display\n• 128GB storage\n• A17 chip\n• Dual camera'
+)">
 <img src="iphone16.jpg">
 <h3>iPhone 16</h3>
 <p>₦700,000</p>
 <input type="number" id="q3" value="1">
-<button onclick="addToCart('iPhone 16',700000,'q3')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPhone 16',700000,'q3')">Order</button>
 </div>
 
-<div class="product">
+<!-- iPhone 12 Pro -->
+<div class="product" onclick="openProductDetails(
+'iPhone 12 Pro',
+370000,
+'12pro.jpg',
+'• 6.1-inch display\n• 128GB\n• Triple camera\n• A14 chip'
+)">
 <img src="12pro.jpg">
 <h3>iPhone 12 Pro</h3>
 <p>₦370,000</p>
 <input type="number" id="q4" value="1">
-<button onclick="addToCart('iPhone 12 Pro',370000,'q4')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPhone 12 Pro',370000,'q4')">Order</button>
 </div>
 
-<div class="product">
+<!-- iPhone 12 Pro Max -->
+<div class="product" onclick="openProductDetails(
+'iPhone 12 Pro Max',
+480000,
+'12pm.jpg',
+'• 6.7-inch display\n• 128GB\n• Triple camera\n• A14 chip'
+)">
 <img src="12pm.jpg">
 <h3>iPhone 12 Pro Max</h3>
-<p>₦480k</p>
+<p>₦480,000</p>
 <input type="number" id="q5" value="1">
-<button onclick="addToCart('iPhone 12 Pro Max',480000,'q5')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPhone 12 Pro Max',480000,'q5')">Order</button>
 </div>
 
-<div class="product">
+<!-- iPhone XR -->
+<div class="product" onclick="openProductDetails(
+'iPhone XR',
+175000,
+'xr.jpg',
+'• 6.1-inch display\n• 64GB\n• Single camera\n• A12 chip'
+)">
 <img src="xr.jpg">
 <h3>iPhone XR</h3>
-<p>₦175k</p>
+<p>₦175,000</p>
 <input type="number" id="q6" value="1">
-<button onclick="addToCart('iPhone XR',175000,'q6')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPhone XR',175000,'q6')">Order</button>
 </div>
 
-<div class="product">
+<!-- Samsung S24 Ultra -->
+<div class="product" onclick="openProductDetails(
+'Samsung S24 Ultra',
+760000,
+'samsungs24ultra.jpg',
+'• 6.8-inch display\n• 12GB RAM\n• 256GB\n• 200MP camera'
+)">
 <img src="samsungs24ultra.jpg">
 <h3>S24 Ultra</h3>
 <p>₦760,000</p>
 <input type="number" id="q7" value="1">
-<button onclick="addToCart('S24 Ultra',760000,'q7')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('S24 Ultra',760000,'q7')">Order</button>
 </div>
 
-<div class="product">
+<!-- Samsung S22 Ultra -->
+<div class="product" onclick="openProductDetails(
+'Samsung S22 Ultra',
+540000,
+'samsungs22ultra.jpg',
+'• 6.8-inch display\n• 8GB RAM\n• 128GB\n• 108MP camera'
+)">
 <img src="samsungs22ultra.jpg">
 <h3>S22 Ultra</h3>
 <p>₦540,000</p>
 <input type="number" id="q8" value="1">
-<button onclick="addToCart('S22 Ultra',540000,'q8')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('S22 Ultra',540000,'q8')">Order</button>
 </div>
 
-<div class="product">
+<!-- Samsung S26 Ultra -->
+<div class="product" onclick="openProductDetails(
+'Samsung S26 Ultra',
+1700000,
+'Samsungs26ultra.jpg',
+'• 6.9-inch display\n• 16GB RAM\n• 1TB storage\n• 250MP camera'
+)">
 <img src="Samsungs26ultra.jpg">
 <h3>S26 Ultra</h3>
 <p>₦1,700,000</p>
 <input type="number" id="q9" value="1">
-<button onclick="addToCart('S26 Ultra',1700000,'q9')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('S26 Ultra',1700000,'q9')">Order</button>
 </div>
-
 </div>
 
 <!-- TABLETS -->
