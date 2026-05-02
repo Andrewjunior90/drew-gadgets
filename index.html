@@ -998,40 +998,28 @@ function clearOrders(){
     
     // 🔐 LOGIN SYSTEM
 <script>
+// 🔐 LOGIN SYSTEM
 function loginUser() {
-  const name = document.getElementById("username").value;
-  const phone = document.getElementById("phone").value;
+  const name = document.getElementById("username").value.trim();
+  const phone = document.getElementById("phone").value.trim();
 
   if (!name || !phone) {
     alert("Please fill all fields");
     return;
   }
 
-  // ✅ Save user
   const user = { name, phone };
   localStorage.setItem("drewUser", JSON.stringify(user));
 
-  // ✅ Close login page
+  // Hide login
   document.getElementById("loginPage").style.display = "none";
 
-  // ✅ Open account page
-  document.getElementById("accountPage").style.display = "block";
-
-  // ✅ Show user info
-  document.getElementById("accName").innerText =
-    "Welcome " + name + "!";
-
-  document.getElementById("accEmail").innerText = phone;
+  // Show account
+  showAccount(user);
 }
 
-function openAccount() {
-  const user = JSON.parse(localStorage.getItem("drewUser"));
-
-  if (!user) {
-    document.getElementById("loginPage").style.display = "flex";
-    return;
-  }
-
+// ✅ SHOW ACCOUNT (single clean function)
+function showAccount(user) {
   document.getElementById("accountPage").style.display = "block";
 
   document.getElementById("accName").innerText =
@@ -1041,8 +1029,27 @@ function openAccount() {
     user.phone;
 }
 
+// ✅ OPEN ACCOUNT FROM NAV
+function openAccount() {
+  const user = JSON.parse(localStorage.getItem("drewUser"));
+
+  if (!user) {
+    document.getElementById("loginPage").style.display = "flex";
+    return;
+  }
+
+  showAccount(user);
+}
+
+// ✅ CLOSE ACCOUNT
 function closeAccount() {
   document.getElementById("accountPage").style.display = "none";
+}
+
+// ✅ LOGOUT
+function logoutUser() {
+  localStorage.removeItem("drewUser");
+  location.reload();
 }
 
 // ✅ AUTO LOGIN
@@ -1054,11 +1061,11 @@ window.addEventListener("load", () => {
   }
 });
 
+// ✅ WHATSAPP
 function openWhatsApp() {
   window.open("https://wa.me/2348028412449", "_blank");
 }
 </script>
-
   <div id="accountPage" style="
 display:none;
 position:fixed;
@@ -1219,14 +1226,6 @@ function logoutUser() {
 // ✅ FIX NAV BUTTONS
 function openCart() {
   document.getElementById("checkoutPage").style.display = "block";
-}
-
-function openAccount() {
-  document.getElementById("accountPage").style.display = "block";
-}
-
-function closeAccount() {
-  document.getElementById("accountPage").style.display = "none";
 }
 
 // ✅ ORDER HISTORY
