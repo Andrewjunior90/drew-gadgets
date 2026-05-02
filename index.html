@@ -8,6 +8,19 @@
 <meta name="theme-color" content="#000000">
   <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
+  .cat-btn {
+  background: #111;
+  color: #25D366;
+  border: 1px solid #25D366;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cat-btn:active {
+  transform: scale(0.95);
+}
 body {
   background:#000;
   color:#fff;
@@ -255,9 +268,6 @@ border-bottom:1px solid #222;
   <h2 onclick="secretAdminAccess()" style="margin:0; cursor:pointer;">
   🛍️ Drew Gadgets
   </h2>
-<p id="welcomeUser"></p>
-    <button onclick="openSettings()">⚙️</button>
-</div>
 
 <!-- ✅ LOADER (FIRST THING) -->
 <div id="loader" style="
@@ -321,17 +331,6 @@ padding:20px;
 
 <p id="userInfo" style="color:#aaa;"></p>
 
-<button onclick="logoutUser()" style="
-width:100%;
-padding:12px;
-background:#ff4d4d;
-color:#fff;
-border:none;
-border-radius:8px;
-margin-top:10px;
-">
-Logout
-</button>
 
 <button onclick="closeSettings()" style="
 width:100%;
@@ -349,17 +348,23 @@ Close
 </div>
 <!-- rest of your site -->
 <button id="installBtn" style="display:none; padding:10px;">Install App</button>
-<img src="logo.png.jpg" class="logo">
 <button id="installBtn" style="display:none; padding:10px; background:#25D366; color:#fff; border:none;">
   Install App
 </button>
 <img src="logo.png.jpg" class="logo">
 
-<div class="nav-links">
-<a href="#phones">Phones</a>
-<a href="#tablets">Tablets</a>
-<a href="#laptops">Laptops</a>
-<a href="#accessories">Accessories</a>
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+padding:15px;
+">
+
+<button class="cat-btn" onclick="location.href='#phones'">📱 Phones</button>
+<button class="cat-btn" onclick="location.href='#tablets'">💊 Tablets</button>
+<button class="cat-btn" onclick="location.href='#laptops'">💻 Laptops</button>
+<button class="cat-btn" onclick="location.href='#accessories'">🎧 Accessories</button>
+
 </div>
   <button onclick="logoutUser()" style="
 margin-top:10px;
