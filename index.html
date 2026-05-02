@@ -445,33 +445,34 @@ padding:15px;
 
 <!-- PHONES -->
 <h2 id="phones">📱 Phones</h2>
-<div id="productsContainer" class="products"></div>
 
+<!-- iPhone 17 Pro Max -->
 <div class="product" onclick="openProductDetails(
-  'iPhone 17 Pro Max',
-  '2950000',
-  '17pm.jpg',
-  '• 6.9-inch display\n• 1TB storage\n• 48MP Camera\n• A18 Chip\n• Face ID'
+'iPhone 17 Pro Max',
+2950000,
+'17pm.jpg',
+'• 6.9-inch display\n• 1TB storage\n• 48MP Camera\n• A18 Chip\n• Face ID'
+)">
 <img src="17pm.jpg">
 <h3>iPhone 17 Pro Max</h3>
 <p>₦2,950,000</p>
 <input type="number" id="q1" value="1" min="1">
-<button onclick="addToCart('iPhone 17 Pro Max',2950000,'q1')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPhone 17 Pro Max',2950000,'q1')">Order</button>
 </div>
 
+<!-- Z Fold 7 -->
 <div class="product" onclick="openProductDetails(
-  'Z Fold 7',
-  1560000,
-  'zfold.jpg',
-  '• Foldable display\n• 12GB RAM\n• 512GB storage\n• Snapdragon chip'
+'Z Fold 7',
+1560000,
+'zfold.jpg',
+'• Foldable display\n• 12GB RAM\n• 512GB storage\n• Snapdragon chip'
 )">
 <img src="zfold.jpg">
 <h3>Z Fold 7</h3>
 <p>₦1,560,000</p>
 <input type="number" id="q2" value="1" min="1">
-<button onclick="addToCart('Z Fold 7',1560000,'q2')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('Z Fold 7',1560000,'q2')">Order</button>
 </div>
-
 <!-- iPhone 16 -->
 <div class="product" onclick="openProductDetails(
 'iPhone 16',
