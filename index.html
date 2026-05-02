@@ -997,6 +997,7 @@ function clearOrders(){
 }
     
     // 🔐 LOGIN SYSTEM
+<script>
 function loginUser() {
   const name = document.getElementById("username").value;
   const phone = document.getElementById("phone").value;
@@ -1020,10 +1021,9 @@ function loginUser() {
   document.getElementById("accName").innerText =
     "Welcome " + name + "!";
 
-  document.getElementById("accEmail").innerText =
-    phone;
-    }
-    
+  document.getElementById("accEmail").innerText = phone;
+}
+
 function openAccount() {
   const user = JSON.parse(localStorage.getItem("drewUser"));
 
@@ -1044,17 +1044,17 @@ function openAccount() {
 function closeAccount() {
   document.getElementById("accountPage").style.display = "none";
 }
-}
 
-// AUTO LOGIN
+// ✅ AUTO LOGIN
 window.addEventListener("load", () => {
-  const user = localStorage.getItem("drewUser");
+  const user = JSON.parse(localStorage.getItem("drewUser"));
 
   if (user) {
     document.getElementById("loginPage").style.display = "none";
   }
 });
-    function openWhatsApp() {
+
+function openWhatsApp() {
   window.open("https://wa.me/2348028412449", "_blank");
 }
 </script>
