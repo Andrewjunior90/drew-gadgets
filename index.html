@@ -476,17 +476,22 @@ padding:15px;
 '17pm.jpg',
 '• 6.9-inch display\n• 1TB storage\n• 48MP Camera\n• A18 Chip\n• Face ID'
 )">
+
 <img src="17pm.jpg">
 <h3>iPhone 17 Pro Max</h3>
 <p>₦2,950,000</p>
+
 <div class="qty-box">
-  <button onclick="decreaseQty('q1')">➖</button>
+  <button onclick="event.stopPropagation(); decreaseQty('q1')">➖</button>
   <span id="q1">1</span>
-  <button onclick="increaseQty('q1')">➕</button>
-</div>
-  <button onclick="addToCartQty('iPhone 17 Pro Max',2950000,'q1')">Order</button>
+  <button onclick="event.stopPropagation(); increaseQty('q1')">➕</button>
 </div>
 
+<button onclick="event.stopPropagation(); addToCartQty('iPhone 17 Pro Max',2950000,'q1')">
+  Order
+</button>
+
+</div>
 <!-- Z Fold 7 -->
 <div class="product" onclick="openProductDetails(
 'Z Fold 7',
