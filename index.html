@@ -848,210 +848,182 @@ Order
 <div id="cartBtn" onclick="goToCheckout()">🛒 <span id="cartCount">0</span></div>
 <a id="whatsappBtn" href="https://wa.me/2348028412449"></a>
 <script>
+<script>
 let cart = [];
 let total = 0;
-function addToCart(name, price, qtyId){
-    let input = document.getElementById(qtyId);
 
-    if(!input){
-        alert("Quantity input missing");
-        return;
-    }
+/* ✅ ADD TO CART (CLEAN VERSION) */
+function addToCart(name, price, qty){
+  if(isNaN(qty) || qty <= 0){
+    alert("Invalid quantity");
+    return;
+  }
 
-    let qty = parseInt(input.value);
+  let existing = cart.find(item => item.name === name);
 
-    if(isNaN(qty) || qty <= 0){
-        alert("Enter a valid quantity");
-        return;
-    }
+  if(existing){
+    existing.qty += qty;
+  } else {
+    cart.push({ name, price, qty });
+  }
 
-    let existing = cart.find(item => item.name === name);
-
-    if(existing){
-        existing.qty += qty;
-    } else {
-        cart.push({ name, price, qty });
-    }
-
-    total += price * qty;
-
-    updateCartUI();
-}
-
-    let existing = cart.find(item => item.name === name);
-
-    if(existing){
-        existing.qty += qty;
-    } else {
-        cart.push({ name, price, qty });
-    }
-
-    total += price * qty;
-
-    updateCartUI();
-}
-function removeFromCart(index){
-  let item = cart[index];
-
-  // subtract from total
-  total -= item.price * item.qty;
-
-  // remove item
-  cart.splice(index, 1);
+  total += price * qty;
 
   updateCartUI();
-    }
-  function updateCartUI(){
+  alert(name + " added to cart ✅");
+}
+
+/* ✅ FOR + / - SYSTEM */
+function addToCartQty(name, price, id){
+  let el = document.getElementById(id);
+  let qty = parseInt(el.textContent);
+
+  addToCart(name, price, qty);
+}
+
+/* ✅ QUANTITY BUTTONS */
+function increaseQty(id){
+  let el = document.getElementById(id);
+  let value = parseInt(el.textContent);
+  el.textContent = value + 1;
+}
+
+function decreaseQty(id){
+  let el = document.getElementById(id);
+  let value = parseInt(el.textContent);
+  if(value > 1){
+    el.textContent = value - 1;
+  }
+}
+
+/* ✅ REMOVE ITEM */
+function removeFromCart(index){
+  let item = cart[index];
+  total -= item.price * item.qty;
+  cart.splice(index, 1);
+  updateCartUI();
+}
+
+/* ✅ UPDATE CART UI */
+function updateCartUI(){
   let itemsHTML = "";
 
   cart.forEach((item, index)=>{
     itemsHTML += `
-  <div class="cart-item">
-    <span>${item.name} (x${item.qty}) - ₦${item.price}</span>
-    <button onclick="removeFromCart(${index})">❌</button>
-  </div>
-`;
+      <div class="cart-item">
+        <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
+        <button onclick="removeFromCart(${index})">❌</button>
+      </div>
+    `;
   });
 
   document.getElementById("checkoutItems").innerHTML = itemsHTML;
   document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
 
-  // update top cart display too (if you have it)
-  if(typeof cartCount !== "undefined"){
-    cartCount.innerText = cart.reduce((sum, item)=> sum + item.qty, 0);
-  }
+  // cart count badge
+  let count = cart.reduce((sum, item)=> sum + item.qty, 0);
+  document.getElementById("cartCount").innerText = count;
+}
 
-  if(typeof totalDisplay !== "undefined"){
-    totalDisplay.innerText = "Total: ₦" + total;
-  }
-  }
-  function renderCart(){
-    let html = "";
-
-    cart.forEach((item, index) => {
-        html += `
-        <div class="cart-item">
-            <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
-        </div>
-        `;
-    });
-
-    document.getElementById("checkoutItems").innerHTML = html;
-    document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
-  }
-/* GO TO CHECKOUT PAGE */
-  function goToCheckout() {
-  if (cart.length === 0) {
+/* ✅ GO TO CHECKOUT */
+function goToCheckout(){
+  if(cart.length === 0){
     alert("No product selected");
     return;
   }
 
-  let html = "";
-
-  cart.forEach((item, index) => {
-    html += `
-      <div class="cart-item">
-        <span>${item.name} (x${item.qty}) - ₦${item.price * item.qty}</span>
-      </div>
-    `;
-  });
-
-  document.getElementById("checkoutItems").innerHTML = html;
-  document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
-
-  // 🔥 THIS IS THE MOST IMPORTANT LINE
+  updateCartUI();
   document.getElementById("checkoutPage").style.display = "block";
-  }
-/* CLOSE CHECKOUT */
+}
+
+/* ✅ CLOSE CHECKOUT */
 function closeCheckout(){
   document.getElementById("checkoutPage").style.display = "none";
 }
 
-/* PLACE ORDER */
-function placeOrder() {
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
+/* ✅ PLACE ORDER */
+function placeOrder(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
 
-    if (!name || !phone || !address) {
-        alert("Fill all details");
-        return;
-    }
+  if(!name || !phone || !address){
+    alert("Fill all details");
+    return;
+  }
 
-    let order = {
-        id: Date.now(),
-        name,
-        phone,
-        address,
-        items: [...cart],
-        total,
-        date: new Date().toLocaleString()
-    };
+  let order = {
+    id: Date.now(),
+    name,
+    phone,
+    address,
+    items: [...cart],
+    total,
+    date: new Date().toLocaleString()
+  };
 
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    orders.push(order);
-    localStorage.setItem("orders", JSON.stringify(orders));
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders.push(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
 
-    alert("Order saved ✅");
+  alert("Order saved ✅");
 
-    // Send to WhatsApp
-    let msg = "ORDER:\n\n" +
-        order.items.map(i => `${i.name} x${i.qty}`).join("\n") +
-        "\n\nTotal: ₦" + total +
-        "\n👤 " + name +
-        "\n📞 " + phone +
-        "\n📍 " + address;
+  // WhatsApp message
+  let msg = "ORDER:\n\n" +
+    order.items.map(i => `${i.name} x${i.qty}`).join("\n") +
+    "\n\nTotal: ₦" + total +
+    "\n👤 " + name +
+    "\n📞 " + phone +
+    "\n📍 " + address;
 
-    window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
-
-    // Clear cart
-    cart = [];
-    total = 0;
-    updateCartUI();
-}
-  function payWithPaystack() {
-  let email = document.getElementById("cEmail")?.value || "customer@email.com";
-
-  let handler = PaystackPop.setup({
-    key: 'pk_test_93d7d641fce057117ee781', // your key
-    email: email,
-    amount: total * 100, // convert to kobo
-
-    callback: function(response) {
-  alert("Payment successful! Reference: " + response.reference);
-
-  // send order AFTER payment
-  placeOrder();
+  window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 
   // clear cart
   cart = [];
   total = 0;
   updateCartUI();
-    }
+}
 
-    onClose: function() {
+/* ✅ PAYSTACK */
+function payWithPaystack(){
+  let email = document.getElementById("cEmail")?.value || "customer@email.com";
+
+  let handler = PaystackPop.setup({
+    key: 'pk_test_93d7d641fce057117ee781',
+    email: email,
+    amount: total * 100,
+
+    callback: function(response){
+      alert("Payment successful! Ref: " + response.reference);
+      placeOrder();
+    },
+
+    onClose: function(){
       alert("Payment cancelled");
     }
   });
 
   handler.openIframe();
-  }
-  function sendProof() {
+}
+
+/* ✅ SEND PAYMENT PROOF */
+function sendProof(){
   let name = document.getElementById("cName").value;
   let phone = document.getElementById("cPhone").value;
   let address = document.getElementById("cAddress").value;
 
   let msg = "🛒 ORDER DETAILS\n\n" +
-            cart.join("\n") +
-            "\n\n💰 Total: ₦" + total +
-            "\n👤 " + name +
-            "\n📞 " + phone +
-            "\n📍 " + address +
-            "\n\nI have paid via Opay.";
+    cart.map(i => `${i.name} x${i.qty}`).join("\n") +
+    "\n\n💰 Total: ₦" + total +
+    "\n👤 " + name +
+    "\n📞 " + phone +
+    "\n📍 " + address +
+    "\n\nI have paid via Opay.";
 
   window.open("https://wa.me/2348028412449?text=" + encodeURIComponent(msg));
 }
-  </script>
+</script>
+  
   
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <!-- ALL YOUR HTML ABOVE -->
