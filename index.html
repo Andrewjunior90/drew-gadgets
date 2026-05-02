@@ -573,29 +573,49 @@ padding:15px;
 
 <!-- TABLETS -->
 <h2 id="tablets">📲 Tablets</h2>
-<div id="productsContainer" class="products"></div>
 
-<div class="product"><span class="badge">🔥</span>
+<!-- iPad Pro M5 -->
+<div class="product" onclick="openProductDetails(
+'iPad Pro M5',
+2250000,
+'ipadpro11.jpg',
+'• 11-inch Liquid Retina display\n• Apple M5 chip\n• 256GB storage\n• Face ID\n• Apple Pencil support'
+)">
+<span class="badge">🔥</span>
 <img src="ipadpro11.jpg">
 <h3>iPad Pro M5</h3>
 <p>₦2,250,000</p>
 <input type="number" id="q10" value="1">
-<button onclick="addToCart('iPad Pro M5',2250000,'q10')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPad Pro M5',2250000,'q10')">Order</button>
 </div>
 
-<div class="product"><span class="badge">🔥</span>
+<!-- iPad Pro M4 -->
+<div class="product" onclick="openProductDetails(
+'iPad Pro M4',
+1800000,
+'ipadpro11.jpg',
+'• 11-inch OLED display\n• Apple M4 chip\n• 256GB storage\n• Face ID\n• Ultra-thin design'
+)">
+<span class="badge">🔥</span>
 <img src="ipadpro11.jpg">
 <h3>iPad Pro M4</h3>
 <p>₦1,800,000</p>
 <input type="number" id="q11" value="1">
-<button onclick="addToCart('iPad Pro M4',1800000,'q11')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPad Pro M4',1800000,'q11')">Order</button>
 </div>
 
-<div class="product">
+<!-- iPad 10 -->
+<div class="product" onclick="openProductDetails(
+'iPad 10',
+300000,
+'ipad10.jpg',
+'• 10.9-inch display\n• A14 Bionic chip\n• 64GB storage\n• Touch ID\n• USB-C charging'
+)">
 <img src="ipad10.jpg">
 <h3>iPad 10</h3>
+<p>₦300,000</p>
 <input type="number" id="q12" value="1">
-<button onclick="addToCart('iPad 10',300000,'q12')">Order</button>
+<button onclick="event.stopPropagation(); addToCart('iPad 10',300000,'q12')">Order</button>
 </div>
 
 </div>
