@@ -1181,13 +1181,12 @@ document.getElementById("installBtn").addEventListener("click", async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
 
-    const choice = await deferredPrompt.userChoice;
-    console.log("User choice:", choice.outcome);
+    const result = await deferredPrompt.userChoice;
+    console.log("User choice:", result.outcome);
 
     deferredPrompt = null;
   }
 });
-    });
 
 function logoutUser() {
   localStorage.removeItem("drewUser");
