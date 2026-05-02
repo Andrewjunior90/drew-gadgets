@@ -702,9 +702,18 @@ Order
 <img src="ipadpro11.jpg">
 <h3>iPad Pro M4</h3>
 <p>₦1,800,000</p>
-<input type="number" id="q11" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPad Pro M4',1800000,'q11')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q11')">➖</button>
+  <span id="q11">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q11')">➕</button>
 </div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPad Pro M4',1800000,'q11')">
+Order
+</button>
+</div>
+
 
 <!-- iPad 10 -->
 <div class="product" onclick="openProductDetails(
@@ -716,8 +725,16 @@ Order
 <img src="ipad10.jpg">
 <h3>iPad 10</h3>
 <p>₦300,000</p>
-<input type="number" id="q12" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPad 10',300000,'q12')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q12')">➖</button>
+  <span id="q12">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q12')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPad 10',300000,'q12')">
+Order
+</button>
 </div>
 
 </div>
