@@ -19,29 +19,13 @@
 }
 .dashboard-categories {
   display: flex;
-  gap: 12px;
-  padding: 15px;
-  overflow-x: auto; /* allows horizontal scroll */
-}
-
-.dashboard-categories::-webkit-scrollbar {
-  display: none; /* hide scroll bar */
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .dash-card {
-  min-width: 90px; /* controls size */
-  background: #111;
-  border-radius: 16px;
-  text-align: center;
-  padding: 20px 10px;
-  font-size: 28px;
-  cursor: pointer;
-  flex-shrink: 0; /* prevents shrinking */
-}
-
-.dash-card p {
-  font-size: 13px;
-  margin-top: 8px;
+  width: 23%;
+  font-size: 22px;
 }
 
 .cat-btn:active {
