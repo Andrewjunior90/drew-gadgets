@@ -187,6 +187,51 @@ input, textarea {
 .item:hover {
   background: #222;
 }
+  .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #222;
+  z-index: 9999;
+}
+
+.nav-item {
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 20px;
+}
+
+.nav-item.active {
+  color: #00c6ff;
+}
+
+.nav-item:active {
+  transform: scale(0.9);
+}
+
+/* CART BADGE */
+#cartCountBadge {
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  background: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
 }
   </style>
 </head>
@@ -794,7 +839,8 @@ function updateCartUI(){
         </div>
         `;
     });
-
+document.getElementById("cartCountBadge").innerText =
+  cart.reduce((sum, item) => sum + item.qty, 0);
     document.getElementById("checkoutItems").innerHTML = itemsHTML;
     document.getElementById("checkoutTotal").innerText = "Total: ₦" + total;
 
@@ -1298,23 +1344,28 @@ function closeOrderHistory() {
 }
 </script>  
   
-<div style="
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#fff;
-display:flex;
-justify-content:space-around;
-padding:10px 0;
-border-top:1px solid #ddd;
-z-index:9999;
-">
+<div class="bottom-nav">
 
-  <div onclick="closeAccount()">🏠<br>Home</div>
-  <div onclick="alert('Coming soon')">📂<br>Categories</div>
-  <div onclick="openCart()">🛒<br>Cart</div>
-  <div onclick="openAccount()" style="color:orange;">👤<br>Account</div>
+  <div class="nav-item active" onclick="closeAccount()">
+    <span>🏠</span>
+    <small>Home</small>
+  </div>
+
+  <div class="nav-item" onclick="alert('Coming soon')">
+    <span>📂</span>
+    <small>Categories</small>
+  </div>
+
+  <div class="nav-item" onclick="openCart()">
+    <span>🛒</span>
+    <small>Cart</small>
+    <b id="cartCountBadge">0</b>
+  </div>
+
+  <div class="nav-item" onclick="openAccount()">
+    <span>👤</span>
+    <small>Account</small>
+  </div>
 
 </div>
 </body>
