@@ -1005,7 +1005,24 @@ function loginUser() {
     alert("Please fill all fields");
     return;
   }
-}
+
+  // ✅ Save user
+  const user = { name, phone };
+  localStorage.setItem("drewUser", JSON.stringify(user));
+
+  // ✅ Close login page
+  document.getElementById("loginPage").style.display = "none";
+
+  // ✅ Open account page
+  document.getElementById("accountPage").style.display = "block";
+
+  // ✅ Show user info
+  document.getElementById("accName").innerText =
+    "Welcome " + name + "!";
+
+  document.getElementById("accEmail").innerText =
+    phone;
+    }
     
 function openAccount() {
   const user = JSON.parse(localStorage.getItem("drewUser"));
@@ -1027,11 +1044,6 @@ function openAccount() {
 function closeAccount() {
   document.getElementById("accountPage").style.display = "none";
 }
-  const user = { name, phone };
-
-  localStorage.setItem("drewUser", JSON.stringify(user));
-
-  document.getElementById("loginPage").style.display = "none";
 }
 
 // AUTO LOGIN
