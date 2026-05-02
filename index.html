@@ -18,31 +18,30 @@
   cursor: pointer;
 }
 .dashboard-categories {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 per row (bigger) */
-  gap: 15px;
+  display: flex;
+  gap: 12px;
   padding: 15px;
+  overflow-x: auto; /* allows horizontal scroll */
+}
+
+.dashboard-categories::-webkit-scrollbar {
+  display: none; /* hide scroll bar */
 }
 
 .dash-card {
+  min-width: 90px; /* controls size */
   background: #111;
   border-radius: 16px;
   text-align: center;
-  padding: 25px 10px; /* bigger padding */
-  font-size: 30px; /* bigger icons */
+  padding: 20px 10px;
+  font-size: 28px;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.dash-card:hover {
-  transform: scale(1.05);
-  background: #1a1a1a;
+  flex-shrink: 0; /* prevents shrinking */
 }
 
 .dash-card p {
-  font-size: 15px; /* bigger text */
-  margin-top: 10px;
-  font-weight: 500;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 .cat-btn:active {
