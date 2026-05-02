@@ -561,9 +561,9 @@ padding:15px;
 <button onclick="event.stopPropagation(); addToCart('iPhone XR',175000,'q6')">Order</button>
 </div>
 
-<!-- Samsung S24 Ultra -->
+<!-- S24 Ultra -->
 <div class="product" onclick="openProductDetails(
-'Samsung S24 Ultra',
+'S24 Ultra',
 760000,
 'samsungs24ultra.jpg',
 '• 6.8-inch display\n• 12GB RAM\n• 256GB\n• 200MP camera'
@@ -571,13 +571,19 @@ padding:15px;
 <img src="samsungs24ultra.jpg">
 <h3>S24 Ultra</h3>
 <p>₦760,000</p>
-<input type="number" id="q7" value="1">
-<button onclick="event.stopPropagation(); addToCart('S24 Ultra',760000,'q7')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q7')">➖</button>
+  <span id="q7">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q7')">➕</button>
 </div>
 
-<!-- Samsung S22 Ultra -->
+<button onclick="event.stopPropagation(); addToCartQty('S24 Ultra',760000,'q7')">Order</button>
+</div>
+
+<!-- S22 Ultra -->
 <div class="product" onclick="openProductDetails(
-'Samsung S22 Ultra',
+'S22 Ultra',
 540000,
 'samsungs22ultra.jpg',
 '• 6.8-inch display\n• 8GB RAM\n• 128GB\n• 108MP camera'
@@ -585,22 +591,34 @@ padding:15px;
 <img src="samsungs22ultra.jpg">
 <h3>S22 Ultra</h3>
 <p>₦540,000</p>
-<input type="number" id="q8" value="1">
-<button onclick="event.stopPropagation(); addToCart('S22 Ultra',540000,'q8')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q8')">➖</button>
+  <span id="q8">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q8')">➕</button>
 </div>
 
-<!-- Samsung S26 Ultra -->
+<button onclick="event.stopPropagation(); addToCartQty('S22 Ultra',540000,'q8')">Order</button>
+</div>
+
+<!-- S26 Ultra -->
 <div class="product" onclick="openProductDetails(
-'Samsung S26 Ultra',
+'S26 Ultra',
 1700000,
 'Samsungs26ultra.jpg',
-'• 6.9-inch display\n• 16GB RAM\n• 1TB storage\n• 250MP camera'
+'• 6.9-inch display\n• 16GB RAM\n• 1TB\n• 250MP camera'
 )">
 <img src="Samsungs26ultra.jpg">
 <h3>S26 Ultra</h3>
 <p>₦1,700,000</p>
-<input type="number" id="q9" value="1">
-<button onclick="event.stopPropagation(); addToCart('S26 Ultra',1700000,'q9')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q9')">➖</button>
+  <span id="q9">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q9')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('S26 Ultra',1700000,'q9')">Order</button>
 </div>
 </div>
 
@@ -612,14 +630,20 @@ padding:15px;
 'iPad Pro M5',
 2250000,
 'ipadpro11.jpg',
-'• 11-inch Liquid Retina display\n• Apple M5 chip\n• 256GB storage\n• Face ID\n• Apple Pencil support'
+'• 11-inch display\n• M5 chip\n• 256GB\n• Face ID'
 )">
 <span class="badge">🔥</span>
 <img src="ipadpro11.jpg">
 <h3>iPad Pro M5</h3>
 <p>₦2,250,000</p>
-<input type="number" id="q10" value="1">
-<button onclick="event.stopPropagation(); addToCart('iPad Pro M5',2250000,'q10')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q10')">➖</button>
+  <span id="q10">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q10')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('iPad Pro M5',2250000,'q10')">Order</button>
 </div>
 
 <!-- iPad Pro M4 -->
@@ -666,8 +690,16 @@ padding:15px;
 <img src="hpelite.jpg">
 <h3>HP Elitebook G9</h3>
 <p>₦1,080,000</p>
-<input type="number" id="q13" value="1">
-<button onclick="event.stopPropagation(); addToCart('HP Elitebook G9',1080000,'q13')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q13')">➖</button>
+  <span id="q13">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q13')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('HP Elitebook G9',1080000,'q13')">
+  Order
+</button>
 </div>
 
 <!-- MacBook Pro M5 Max -->
@@ -680,8 +712,16 @@ padding:15px;
 <img src="macbook.jpg">
 <h3>MacBook Pro M5 Max</h3>
 <p>₦6,980,000</p>
-<input type="number" id="q14" value="1">
-<button onclick="event.stopPropagation(); addToCart('MacBook Pro M5 Max',6980000,'q14')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q14')">➖</button>
+  <span id="q14">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q14')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('MacBook Pro M5 Max',6980000,'q14')">
+  Order
+</button>
 </div>
 
 <!-- Alienware X17 -->
@@ -695,8 +735,16 @@ padding:15px;
 <img src="alienware.jpg">
 <h3>Alienware X17</h3>
 <p>₦2,400,000</p>
-<input type="number" id="q15" value="1">
-<button onclick="event.stopPropagation(); addToCart('Alienware X17',2400000,'q15')">Order</button>
+
+<div class="qty-box">
+  <button onclick="event.stopPropagation(); decreaseQty('q15')">➖</button>
+  <span id="q15">1</span>
+  <button onclick="event.stopPropagation(); increaseQty('q15')">➕</button>
+</div>
+
+<button onclick="event.stopPropagation(); addToCartQty('Alienware X17',2400000,'q15')">
+  Order
+</button>
 </div>
 </div>
 
